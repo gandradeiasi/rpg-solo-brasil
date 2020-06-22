@@ -28,7 +28,7 @@
                 <div class="command">
                     <p class="title">Interpretações, Perguntas e Dados</p>
                     <div class="textarea-button">
-                        <textarea placeholder="Insira aqui sua narrativa, perguntas e rolagem de dados" class="command-text"></textarea>
+                        <textarea id="txtarea-command" placeholder="Insira aqui sua narrativa, perguntas e rolagem de dados" class="command-text"></textarea>
                         <button id="btn-enviar">Enviar</button>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
             <div class="col-2">
                 <div class="notes">
                     <p class="title">Anotações</p>
-                    <textarea class="notes-text"></textarea>
+                    <textarea placeholder="Faça aqui suas anotações" class="notes-text"></textarea>
                 </div>
                 <div class="buttons">
                     <button id="btn-sim-nao">Resposta de sim/não</button>
@@ -49,6 +49,8 @@
         </div>
     </div>
 
+    <script src="assets/js/variables.js"></script>
+    <script type="module" src="assets/js/events.js"></script>
     <script type="module" src="assets/js/controller.js"></script>
 </body>
 
