@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPG Solo</title>
     <link rel="stylesheet" href="assets/style.css/style.css">
-
 </head>
 
 <body>
@@ -24,13 +23,13 @@
         <div class="container">
             <div class="col-1">
                 <div class="log">
-                    <textarea class="log-text"></textarea>
+                    <textarea placeholder="Sua aventura está prestes a ser escrita..." class="log-text"></textarea>
                 </div>
                 <div class="command">
                     <p class="title">Interpretações, Perguntas e Dados</p>
                     <div class="textarea-button">
-                        <textarea class="command-text"></textarea>
-                        <button>Enviar</button>
+                        <textarea placeholder="Insira aqui sua narrativa, perguntas e rolagem de dados" class="command-text"></textarea>
+                        <button id="btn-enviar">Enviar</button>
                     </div>
                 </div>
             </div>
@@ -49,6 +48,8 @@
             </div>
         </div>
     </div>
+
+    <script type="module" src="assets/js/controller.js"></script>
 </body>
 
 </html>
