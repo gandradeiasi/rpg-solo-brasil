@@ -17,3 +17,7 @@ btn_sim_nao.addEventListener('click', () => {
     if (input) command_controller.adicionaAoLog(input);
     command_controller.adicionaAoLog(`<strong>${BotaoSimNao.resultado()}<strong>`);
 });
+
+abre_anotacoes.addEventListener('click', () => { anotacoes.classList.add('active') });
+
+fecha_anotacoes.addEventListener('click', () => { anotacoes.classList.remove('active') });
