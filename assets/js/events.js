@@ -14,7 +14,8 @@ btn_sim_nao.addEventListener('click', () => {
 
 btn_inspiracoes.addEventListener('click', () => {
     adicionaPergunta();
-    command_controller.adicionaAoLog(`<strong>Inspirações: ${BotaoInspiracoes.resultado(3).join(' / ')}<strong>`);
+    const resultado = BotaoInspiracoes.resultado();
+    command_controller.adicionaAoLog(`<strong>Inspiração: ${resultado.substantivo} / ${resultado.verbo}<strong>`);
 });
 
 window.addEventListener('keyup', e => {
@@ -27,6 +28,8 @@ fecha_anotacoes.addEventListener('click', () => { anotacoes.classList.remove('ac
 
 function enviaComando() {
     let input = txtarea_command.value;
+
+    if (!input) return;
 
     if (command_controller.reconheceComando(input)) command_controller.executaComando(input);
     else command_controller.adicionaAoLog(input);

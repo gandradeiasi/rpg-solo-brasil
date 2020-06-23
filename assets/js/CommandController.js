@@ -49,6 +49,7 @@ class CommandController {
         if (txtarea_log.dataset.placeholder) {
             txtarea_log.dataset.placeholder = '';
             txtarea_log.innerHTML = "";
+            txtarea_log.setAttribute('contenteditable',true);
         }
         txtarea_log.innerHTML += string + "<br><br>";
         this.limpaComando();
