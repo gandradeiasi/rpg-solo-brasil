@@ -1,5 +1,6 @@
 const btn_enviar = document.querySelector('#btn-enviar');
 const btn_sim_nao = document.querySelector('#btn-sim-nao');
+const btn_inspiracoes= document.querySelector('#btn-inspiracoes');
 const abre_anotacoes = document.querySelector('#abre-anotacoes');
 const fecha_anotacoes = document.querySelector('#fecha-anotacoes');
 const anotacoes = document.querySelector('#anotacoes');

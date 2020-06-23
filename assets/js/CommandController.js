@@ -52,6 +52,7 @@ class CommandController {
         }
         txtarea_log.innerHTML += string + "<br><br>";
         this.limpaComando();
+        txtarea_log.scrollBy(0,99999);
         txtarea_command.focus();
     }
 

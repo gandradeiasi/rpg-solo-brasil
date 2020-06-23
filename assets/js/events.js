@@ -8,9 +8,13 @@ hamburger.addEventListener('click', () => {
 });
 
 btn_sim_nao.addEventListener('click', () => {
-    let input = txtarea_command.value;
-    if (input) command_controller.adicionaAoLog(input);
+    adicionaPergunta();
     command_controller.adicionaAoLog(`<strong>${BotaoSimNao.resultado()}<strong>`);
+});
+
+btn_inspiracoes.addEventListener('click', () => {
+    adicionaPergunta();
+    command_controller.adicionaAoLog(`<strong>Inspirações: ${BotaoInspiracoes.resultado(3).join(' / ')}<strong>`);
 });
 
 window.addEventListener('keyup', e => {
@@ -26,6 +30,9 @@ function enviaComando() {
 
     if (command_controller.reconheceComando(input)) command_controller.executaComando(input);
     else command_controller.adicionaAoLog(input);
+}
 
-    txtarea_log.scrollBy(0,99999);
+function adicionaPergunta() {
+    let input = txtarea_command.value;
+    if (input) command_controller.adicionaAoLog(input);
 }
