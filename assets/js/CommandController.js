@@ -12,7 +12,7 @@ class CommandController {
                         const dice_amount = roll_info[1] ? roll_info[1] : 1;
                         const dice_max = roll_info[2];
                         const modifier = roll_info[3] ? roll_info[3] : 0;
-                        this.adicionaAoLog(DiceRoller.formatRoll(DiceRoller.roll(dice_amount, dice_max, modifier)));
+                        this.adicionaAoLog(`<strong>${DiceRoller.formatRoll(DiceRoller.roll(dice_amount, dice_max, modifier))}</strong>`);
                     }
                 }
             },
@@ -60,7 +60,7 @@ class CommandController {
         else return null;
     }
 
-    reconheceParametro(input) { return /\/.*\s(.*)/.exec(input)[1]; }
+    reconheceParametro(input) { return /\/.*\s(.*)/.exec(input.replace(/\n/g,''))[1]; }
 
     validaParametro(parametro, regex) {
         if (regex.test(parametro)) return true;

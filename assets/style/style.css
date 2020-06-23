@@ -47,14 +47,16 @@ header .container .hamburger { display: none; z-index: 2; }
 .menu li >*:hover { transform: scale(1.1); }
 
 @media (max-width: 768px) {
+    body { height: initial; }
+
     .main .container { flex-direction: column; }
-    .main .container .col-1 .log-text { background-color: #fff7e3; padding: .5rem; height: calc(100vh - 70px - 115px); overflow: auto }
+    .main .container .col-1 .log-text { background-color: #fff7e3; padding: .5rem; height: 70vh; overflow: auto }
     .main .container .col-2 { width: 100%; border-left: 0; }
-    .main .container .col-2 .notes { position: fixed; left: 0; height: 100vh; bottom: 101vh; width: 100%; transition: 700ms ease-in;}
+    .main .container .col-2 .notes { display: block; position: fixed; left: 0; height: 70vh; bottom: 101vh; width: 100%; transition: 700ms ease-in;}
     .main .container .col-2 .notes.active { bottom: 4px; }
     .main .container .col-2 .notes .title { display: none; }
     .main .container .col-2 .notes .fechar { border-left: 1px solid black; border-right: 1px solid black; display: block; background-color: var(--light-brown); padding: .5rem; text-align: center; }
-    .main .container .col-2 .notes .notes-text { border: 1px solid }
+    .main .container .col-2 .notes .notes-text { border: 1px solid; margin-bottom: -4px; height: calc(70vh - 34px); }
     .main .container .col-2 .buttons { border-top: 1px solid black; }
 
     header { width: 100%; border: 1px solid black; }

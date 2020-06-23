@@ -27,8 +27,6 @@ class BotaoSimNao {
 
         BotaoSimNao.sim_nao_count = result.reseta ? 0 : BotaoSimNao.sim_nao_count + 1;
 
-        console.log(BotaoSimNao.sim_nao_count);
-
         if (result.evento) result.resultado += `<br><br>${Eventos.aleatorio()}`;
 
         return result.resultado;
