@@ -14,7 +14,7 @@
             <ul>
                 <li>O que é RPG Solo?</li>
                 <li>Como utilizar esse site?</li>
-                <li>Grupo no Facebook</li>
+                <li><a target="_blank" href="https://www.facebook.com/groups/187588152056870">Grupo do Facebook</a></li>
                 <li>Configurações</li>
             </ul>
         </nav>
@@ -23,12 +23,11 @@
         <div class="container">
             <div class="col-1">
                 <div class="log">
-                    <textarea placeholder="Sua aventura está prestes a ser escrita..." class="log-text"></textarea>
+                    <textarea readonly id="txtarea-log" placeholder="Sua aventura está prestes a ser escrita..." class="log-text"></textarea>
                 </div>
                 <div class="command">
-                    <p class="title">Interpretações, Perguntas e Dados</p>
                     <div class="textarea-button">
-                        <textarea id="txtarea-command" placeholder="Insira aqui sua narrativa, perguntas e rolagem de dados" class="command-text"></textarea>
+                        <textarea id="txtarea-command" placeholder="Insira aqui sua narrativa, perguntas e rolagem de dados. Para ver os comandos disponíveis digite '/help' e clique em enviar." class="command-text"></textarea>
                         <button id="btn-enviar">Enviar</button>
                     </div>
                 </div>
@@ -39,8 +38,13 @@
                     <textarea placeholder="Faça aqui suas anotações" class="notes-text"></textarea>
                 </div>
                 <div class="buttons">
-                    <button id="btn-sim-nao">Resposta de sim/não</button>
-                    <button id="btn-abrangente">Resposta abrangente</button>
+                    <button id="btn-sim-nao">Sim/Não</button>
+                    <button id="btn-tempero">Inspirações</button>
+                    <button id="btn-missoes">Missão</button>
+                    <button id="btn-evento">Evento Aleatório</button>
+                    <button id="btn-objeto">Objeto</button>
+                    <button id="btn-clima">Clima</button>
+                    <button id="btn-nome">Nome</button>
                     <button id="btn-adjetivo">Adjetivo</button>
                     <button id="btn-raca">Raça</button>
                     <button id="btn-classe">Classe</button>
@@ -49,9 +53,10 @@
         </div>
     </div>
 
-    <script src="assets/js/variables.js"></script>
-    <script type="module" src="assets/js/events.js"></script>
-    <script type="module" src="assets/js/controller.js"></script>
+    <script src="assets/js/globals.js"></script>
+    <script src="assets/js/DiceRoller.js"></script>
+    <script src="assets/js/CommandController.js"></script>
+    <script src="assets/js/events.js"></script>
 </body>
 
 </html>

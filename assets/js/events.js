@@ -1,5 +1,8 @@
-import DiceRoller from 'DiceRoller.js';
+const command_controller = new CommandController();
 
 btn_enviar.addEventListener('click', () => {
-    console.log(txtarea_command)
+    let input = txtarea_command.value;
+
+    if (command_controller.reconheceComando(input)) command_controller.executaComando(input);
+    else command_controller.adicionaAoLog(input);
 });
