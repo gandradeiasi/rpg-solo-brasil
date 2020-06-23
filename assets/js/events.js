@@ -26,4 +26,6 @@ function enviaComando() {
 
     if (command_controller.reconheceComando(input)) command_controller.executaComando(input);
     else command_controller.adicionaAoLog(input);
+
+    txtarea_log.scrollBy(0,99999);
 }
