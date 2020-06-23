@@ -40,7 +40,7 @@ class CommandController {
             }
         });
 
-        if (!comando_existe) alert('Comando inválido');
+        if (!comando_existe) alert(`O comando '/${comando}' é inválido.`);
     }
 
     limpaComando() { txtarea_command.value = "" }

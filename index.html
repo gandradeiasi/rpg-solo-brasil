@@ -11,23 +11,40 @@
 <body>
     <header>
         <nav class="container">
+            <div class="logo">RPG SOLO</div>
             <ul>
-                <li>O que é RPG Solo?</li>
-                <li>Como utilizar esse site?</li>
-                <li><a target="_blank" href="https://www.facebook.com/groups/187588152056870">Grupo do Facebook</a></li>
-                <li>Configurações</li>
+                <li data-menu-slot="1"></li>
+                <li data-menu-slot="2"></li>
+                <li data-menu-slot="3"></li>
+                <li data-menu-slot="4"></li>
             </ul>
+            <div id="hamburger" class="hamburger">
+                <div class="traco"></div>
+                <div class="traco meio"></div>
+                <div class="traco"></div>
+            </div>
         </nav>
     </header>
+    <nav id="mobile-menu" class="mobile-menu">
+        <ul>
+            <li data-menu-slot="1"></li>
+            <li data-menu-slot="2"></li>
+            <li data-menu-slot="3"></li>
+            <li data-menu-slot="4"></li>
+        </ul>
+    </nav>
     <div class="main">
         <div class="container">
             <div class="col-1">
                 <div class="log">
-                    <textarea readonly id="txtarea-log" placeholder="Sua aventura está prestes a ser escrita..." class="log-text"></textarea>
+                    <textarea readonly id="txtarea-log" placeholder="Sua aventura está prestes a ser escrita..."
+                        class="log-text"></textarea>
                 </div>
                 <div class="command">
                     <div class="textarea-button">
-                        <textarea id="txtarea-command" placeholder="Insira aqui sua narrativa, perguntas e rolagem de dados. Para ver os comandos disponíveis digite '/help' e clique em enviar." class="command-text"></textarea>
+                        <textarea id="txtarea-command"
+                            placeholder="Insira aqui sua narrativa, perguntas e rolagem de dados. Para ver os comandos disponíveis digite '/help' e clique em enviar."
+                            class="command-text"></textarea>
                         <button id="btn-enviar">Enviar</button>
                     </div>
                 </div>
@@ -57,6 +74,7 @@
     <script src="assets/js/DiceRoller.js"></script>
     <script src="assets/js/CommandController.js"></script>
     <script src="assets/js/events.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 
 </html>
