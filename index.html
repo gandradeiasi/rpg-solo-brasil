@@ -12,11 +12,8 @@
     <header>
         <nav class="container">
             <div class="logo">RPG SOLO</div>
-            <ul>
+            <ul class="menu">
                 <li data-menu-slot="1"></li>
-                <li data-menu-slot="2"></li>
-                <li data-menu-slot="3"></li>
-                <li data-menu-slot="4"></li>
             </ul>
             <div id="hamburger" class="hamburger">
                 <div class="traco"></div>
@@ -26,20 +23,15 @@
         </nav>
     </header>
     <nav id="mobile-menu" class="mobile-menu">
-        <ul>
+        <ul class="menu">
             <li data-menu-slot="1"></li>
-            <li data-menu-slot="2"></li>
-            <li data-menu-slot="3"></li>
-            <li data-menu-slot="4"></li>
         </ul>
     </nav>
     <div class="main">
         <div class="container">
             <div class="col-1">
-                <div class="log">
-                    <textarea readonly id="txtarea-log" placeholder="Sua aventura está prestes a ser escrita..."
-                        class="log-text"></textarea>
-                </div>
+                <div readonly id="txtarea-log" data-placeholder="true" class="log-text">Sua aventura está prestes a ser
+                    escrita...</div>
                 <div class="command">
                     <div class="textarea-button">
                         <textarea id="txtarea-command"
@@ -56,7 +48,7 @@
                 </div>
                 <div class="buttons">
                     <button id="btn-sim-nao">Sim/Não</button>
-                    <button id="btn-tempero">Inspirações</button>
+                    <!-- <button id="btn-tempero">Inspirações</button>
                     <button id="btn-missoes">Missão</button>
                     <button id="btn-evento">Evento Aleatório</button>
                     <button id="btn-objeto">Objeto</button>
@@ -64,13 +56,18 @@
                     <button id="btn-nome">Nome</button>
                     <button id="btn-adjetivo">Adjetivo</button>
                     <button id="btn-raca">Raça</button>
-                    <button id="btn-classe">Classe</button>
+                    <button id="btn-classe">Classe</button> -->
                 </div>
             </div>
         </div>
     </div>
+    <div id="modal">
+
+    </div>
 
     <script src="assets/js/globals.js"></script>
+    <script src="assets/js/Eventos.js"></script>
+    <script src="assets/js/BotaoSimNao.js"></script>
     <script src="assets/js/DiceRoller.js"></script>
     <script src="assets/js/CommandController.js"></script>
     <script src="assets/js/events.js"></script>

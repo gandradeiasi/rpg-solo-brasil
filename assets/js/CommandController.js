@@ -46,7 +46,11 @@ class CommandController {
     limpaComando() { txtarea_command.value = "" }
 
     adicionaAoLog(string) {
-        txtarea_log.value += string + "\n\n";
+        if (txtarea_log.dataset.placeholder) {
+            txtarea_log.dataset.placeholder = '';
+            txtarea_log.innerHTML = "";
+        }
+        txtarea_log.innerHTML += string + "<br><br>";
         this.limpaComando();
         txtarea_command.focus();
     }

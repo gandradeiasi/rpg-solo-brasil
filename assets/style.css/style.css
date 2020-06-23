@@ -1,5 +1,5 @@
 /* Elements */
-body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; position: relative ;}
+body { margin: 0; display: flex; flex-direction: column; height: 100vh; position: relative; }
 textarea { width: 100%; padding: .5rem; border: none; resize: none; border-radius: 0; box-sizing: border-box; }
 textarea:focus { outline: none; }
 ul { padding: 0; }
@@ -19,14 +19,14 @@ header .container .hamburger { display: none; z-index: 2; }
 .mobile-menu.active { right: 0%; }
 .mobile-menu ul { position: absolute; top: 50%; text-align: center; color: white; width: 100%; transform: translateY(-50%); }
 
-.main { background-color: darkgray; flex: auto; display: flex; flex: auto; flex-direction: column; }
+.main { background-color: darkgray; flex: auto; display: flex; flex-direction: column; }
 .main .container { background-color: white; flex: auto; display: flex; border: 1px solid black; }
 .main .container .col-1 { flex: auto; display: flex; flex-direction: column;}
-.main .container .col-1 .log { flex: auto; display: flex; flex-direction: column; }
-.main .container .col-1 .log .log-text { flex: auto; background-color: #fff7e3;}
-.main .container .col-1 .command .textarea-button { display: flex; }
-.main .container .col-1 .command .textarea-button .command-text { border-top: 1px solid black; }
-.main .container .col-1 .command .textarea-button button { border: 1px solid black; }
+.main .container .col-1 .log-text { background-color: #fff7e3; padding: .5rem; height: calc(100vh - 70px - 73px); overflow: auto }
+.main .container .col-1 .log-text[data-placeholder="true"] { color: rgb(0, 0, 0, 0.5) } 
+.main .container .col-1 .command .textarea-button { display: flex; height: 70px; }
+.main .container .col-1 .command .textarea-button .command-text { border-top: 1px solid black;  }
+.main .container .col-1 .command .textarea-button button { border: 1px solid black; border-bottom: none; border-right: none; }
 .main .container .col-2 { background-color: #d0c7b0; width: 300px; border-left: 1px solid black; display: flex; flex-direction: column; }
 .main .container .col-2 .notes { flex: auto; display: flex; flex-direction: column; }
 .main .container .col-2 .notes .notes-text { flex: auto; margin-bottom: 3px; }  
@@ -34,18 +34,20 @@ header .container .hamburger { display: none; z-index: 2; }
 .main .container .col-2 .buttons { text-align: center; padding: .5rem; }
 .main .container .col-2 .buttons button { margin-bottom: 3px; }
 
-.modal {  }
-
 /*Modules*/
 
 .container { max-width: 1024px; display: block; margin: auto; width: 100%; }
 
+.menu li >*,
+.menu li >*:visited {  color: white; text-decoration: none; transition: 300ms; display: block; font-weight: bold; }
+.menu li >*:hover { transform: scale(1.1); }
+
 @media (max-width: 768px) {
     .main .container { flex-direction: column; }
-    .main .container .col-1 .command .textarea-button { height: 70px; }
+    .main .container .col-1 .log-text { background-color: #fff7e3; padding: .5rem; height: calc(100vh - 70px - 115px); overflow: auto }
     .main .container .col-2 { width: 100%; }
     .main .container .col-2 .notes { display: none; }
-
+    
     header .container ul { display: none; }
     header .container .hamburger { display: block; margin-left: auto; margin-right: 1rem; width: 30px }
     header .container .hamburger .traco { height: 5px; background-color: white; }
