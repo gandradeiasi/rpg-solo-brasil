@@ -7,6 +7,10 @@ hamburger.addEventListener('click', () => {
     else mobile_menu.classList.add('active')
 });
 
+copy_log.addEventListener('click', () => copy(txtarea_log.innerText, "Log copiado para a área de transferência"));
+
+copy_notes.addEventListener('click', () => copy(txtarea_notes.value, "Anotações copiadas para a área de transferência"));
+
 btn_rolar.addEventListener('click', () => {
     txtarea_command.value = `/r ${dice_amount.value}d${dice_max.value}${dice_modifier.value < 0 ? `-${dice_modifier.value * -1}` : `+${dice_modifier.value}`}`
     enviaComando();
@@ -52,4 +56,12 @@ function enviaComando() {
 function adicionaPergunta() {
     let input = txtarea_command.value;
     if (input) command_controller.adicionaAoLog(input);
+}
+
+function copy(text, message) {
+    txtarea_copy.value = text;
+    txtarea_copy.select();
+    txtarea_copy.setSelectionRange(0, 99999); /*For mobile devices*/
+    document.execCommand("copy");
+    if (message) alert(message);
 }

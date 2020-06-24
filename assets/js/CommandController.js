@@ -18,6 +18,11 @@ class CommandController {
                 }
             },
             {
+                "names": ["limpa", "limpar", "clear"],
+                "description": `Limpa o log.`,
+                "function": () => { txtarea_log.innerHTML = "" }
+            },
+            {
                 "names": ["help", "ajuda"],
                 "description": `Mostra a lista de comandos disponíveis.`,
                 "function": () => {
@@ -35,20 +40,23 @@ class CommandController {
 
         this.comandos.forEach(x => { 
             if (x.names.includes(comando))  {
-                x.function(input);
                 this.limpaComando();
+                x.function(input);
                 comando_existe = true;
             }
         });
 
-        if (!comando_existe) alert(`O comando '/${comando}' é inválido.`);
+        if (!comando_existe) { 
+            txtarea_command.value = txtarea_command.value.replace(/\n/g,'');
+            alert(`O comando '/${comando}' é inválido.`);
+        };
     }
 
     limpaComando() { txtarea_command.value = "" }
 
     adicionaAoLog(string) {
-        txtarea_log.innerHTML += string + "<br><br>";
         this.limpaComando();
+        txtarea_log.innerHTML += string + "<br><br>";
         txtarea_log.scrollBy(0,99999);
         txtarea_command.focus();
         Save.save();

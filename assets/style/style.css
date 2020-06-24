@@ -25,13 +25,13 @@ header .container .hamburger { display: none; z-index: 2; }
 
 .main { background-color: darkgray; flex: auto; display: flex; flex-direction: column; }
 .main .container { background-color: white; flex: auto; display: flex; border: 1px solid black; }
-.main .container .col-1 { flex: auto; display: flex; flex-direction: column;}
+.main .container .col-1 { position: relative; flex: auto; display: flex; flex-direction: column;}
 .main .container .col-1 .log-text { background-color: #fff7e3; padding: .5rem; height: calc(100vh - 70px - 73px); overflow: auto }
 .main .container .col-1 .command .textarea-button { display: flex; height: 70px; }
 .main .container .col-1 .command .textarea-button .command-text { border-top: 1px solid black;  }
 .main .container .col-1 .command .textarea-button button { border: 1px solid black; border-bottom: none; border-right: none; }
 .main .container .col-1 .command .textarea-button button:hover { background-color: #eaeaea; }
-.main .container .col-2 { background-color: var(--light-brown); min-width: 300px; border-left: 1px solid black; display: flex; flex-direction: column; }
+.main .container .col-2 { position: relative; background-color: var(--light-brown); min-width: 300px; border-left: 1px solid black; display: flex; flex-direction: column; }
 .main .container .col-2 .notes { flex: auto; display: flex; flex-direction: column; }
 .main .container .col-2 .notes .notes-text { flex: auto; border-top: 1px solid black; border-bottom: 1px solid black; }  
 .main .container .col-2 .notes .title { margin: 0; text-align: center; padding: .5rem 0; }
@@ -40,6 +40,8 @@ header .container .hamburger { display: none; z-index: 2; }
 .main .container .col-2 .buttons .rola-dado input[type="number"] { width: 30px; text-align: center; }
 .main .container .col-2 .buttons button { margin-bottom: 3px; }
 
+.txtarea-copy { position: fixed; top: 10000px; }
+
 /*Modules*/
 
 .container { max-width: 1024px; display: block; margin: auto; width: 100%; }
@@ -47,6 +49,8 @@ header .container .hamburger { display: none; z-index: 2; }
 .menu li >*,
 .menu li >*:visited {  color: white; text-decoration: none; transition: 300ms; display: block; font-weight: bold; }
 .menu li >*:hover { transform: scale(1.1); }
+
+.copy { cursor: pointer; position: absolute; right: 0.5rem; top: 0.5rem }
 
 @media (max-width: 768px) {
     body { height: initial; }
