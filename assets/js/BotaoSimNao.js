@@ -4,12 +4,12 @@ class BotaoSimNao {
     static opcoes = [
         { range: [1], evento: true, reseta: true, resultado: "Não, e um evento acontece:" },
         { range: [2,3], evento: false, reseta: true, resultado: "Não, e..." },
-        { range: [4,5,6], evento: false, reseta: true, resultado: "Não, mas..." },
-        { range: [7,8,9,10], evento: false, reseta: false, resultado: "Não" },
-        { range: [11,12,13,14], evento: false, reseta: false, resultado: "Sim" },
-        { range: [15,16,17], evento: false, reseta: true, resultado: "Sim, mas..." },
-        { range: [18,19], evento: false, reseta: true, resultado: "Sim, e..." },
-        { range: [20], evento: true, reseta: true, resultado: "Sim, um evento acontece:" }
+        { range: [4,5,6,7], evento: false, reseta: true, resultado: "Não, mas..." },
+        { range: [8,9,10,11,12,13,14,15], evento: false, reseta: false, resultado: "Não" },
+        { range: [16,17,18,19,20,21,22,23], evento: false, reseta: false, resultado: "Sim" },
+        { range: [24,25,26,27], evento: false, reseta: true, resultado: "Sim, mas..." },
+        { range: [28,29], evento: false, reseta: true, resultado: "Sim, e..." },
+        { range: [30], evento: true, reseta: true, resultado: "Sim, e um evento acontece:" }
     ]
 
     static resultado() {
@@ -28,7 +28,7 @@ class BotaoSimNao {
         BotaoSimNao.sim_nao_count = result.reseta ? 0 : BotaoSimNao.sim_nao_count + 1;
 
         let retorno = result.resultado;
-
+        
         if (result.evento) retorno += `<br><br>${Eventos.aleatorio()}`;
 
         return retorno;
