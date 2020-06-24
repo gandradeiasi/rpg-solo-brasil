@@ -40,6 +40,12 @@ btn_baralho.addEventListener('click', () => {
     else command_controller.adicionaAoLog(`<strong>Carta: ${resultado.valor} ${resultado.simbolo}<strong>`);
 });
 
+btn_personagem.addEventListener('click', () => {
+    adicionaPergunta();
+    const resultado = BotaoPersonagem.resultado();
+    command_controller.adicionaAoLog(`<strong>Personagem: ${resultado.personalidade} / ${resultado.caracteristica}<strong>`);
+});
+
 window.addEventListener('keyup', e => {
     //envia o que estiver na caida de comando
     if (e.key == "Enter" && document.activeElement === txtarea_command)

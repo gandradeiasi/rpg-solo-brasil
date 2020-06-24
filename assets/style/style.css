@@ -32,12 +32,12 @@ header .container .hamburger { display: none; z-index: 999; }
 .main .container .col-1 .command .textarea-button .command-text.no-cursor { color: transparent; text-shadow: 0px 0px 0px black; }
 .main .container .col-1 .command .textarea-button button { border: 1px solid black; border-bottom: none; border-right: none; }
 .main .container .col-1 .command .textarea-button button:hover { background-color: #eaeaea; }
-.main .container .col-2 { position: relative; background-color: var(--light-brown); min-width: 300px; border-left: 1px solid black; display: flex; flex-direction: column; }
+.main .container .col-2 { position: relative; background-color: var(--light-brown); width: 300px; min-width: 300px; border-left: 1px solid black; display: flex; flex-direction: column; }
 .main .container .col-2 .notes { flex: auto; display: flex; flex-direction: column; }
 .main .container .col-2 .notes .notes-text { flex: auto; border-top: 1px solid black; border-bottom: 1px solid black; }  
 .main .container .col-2 .notes .title { margin: 0; text-align: center; padding: .5rem 0; }
 .main .container .col-2 .notes .fechar { display: none; }
-.main .container .col-2 .buttons { text-align: center; padding: .5rem; height: 53px; }
+.main .container .col-2 .buttons { text-align: center; padding: .5rem; }
 .main .container .col-2 .buttons .rola-dado input[type="number"] { width: 30px; text-align: center; }
 .main .container .col-2 .buttons button { margin-bottom: 3px; }
 

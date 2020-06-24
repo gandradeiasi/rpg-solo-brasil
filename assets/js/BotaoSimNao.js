@@ -38,7 +38,7 @@ class BotaoSimNao {
         "a cena tem algum conflito como foco",
         "a cena envolve investigação, descoberta ou aquisição de conhecimento",
         "um NPC faz uma ação impressionante ou importante",
-        "alguma coisa revela não ser o parecia",
+        "alguma coisa revela não ser o que parecia",
         "alguém é ferido",
         "um novo obtáculo aparece"
     ];
