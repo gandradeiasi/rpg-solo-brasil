@@ -43,7 +43,7 @@ class BotaoSimNao {
         "um novo obtáculo aparece"
     ];
 
-    static evento() { return BotaoSimNao.eventos[parseInt(Math.random() * BotaoSimNao.eventos.length)] }
+    static evento() { return randomFromArray(BotaoSimNao.eventos) }
 
     static resultado() {
         const totalOpcoes = BotaoSimNao.opcoes.reduce((init, current) => init + current.range.length, 0);

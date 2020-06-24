@@ -40,8 +40,8 @@ class BotaoInspiracoes {
 
     static resultado() {
         return {
-            substantivo: BotaoInspiracoes.substantivos[DiceRoller.roll(1,BotaoInspiracoes.substantivos.length).results[0]-1],
-            verbo: BotaoInspiracoes.verbos[DiceRoller.roll(1,BotaoInspiracoes.verbos.length).results[0]-1]
+            substantivo: randomFromArray(BotaoInspiracoes.substantivos),
+            verbo: randomFromArray(BotaoInspiracoes.verbos)
         };
     }
 }

@@ -14,9 +14,9 @@ class BotaoMissoes {
         'Testemunho', 'Imposto', 'Dinheiro', 'Mendigo', 'Perdido', 'Entrangeiro', 'Ancião', 'Criança',
         'Povo', 'Aldeia', 'Vila', 'Cidade', 'Raça', 'Animal', 'Criminoso', 'Malfeitor', 'Bibliotecário',
         'Vítima', 'Crime', 'Ruína', 'Caverna', 'Lago', 'Beco', 'Guilda', 'Mercado', 'Ordem', 'Farsante',
-        'Adivinho', 'Escravo', 'Rico', 'Pobre', 'Tirano', 'Lenda', 'Ponte', 'Abrigo', 'Torre', 'Cripta',
+        'Escravo', 'Rico', 'Pobre', 'Tirano', 'Lenda', 'Ponte', 'Abrigo', 'Torre', 'Cripta',
         'Cemitério', 'Oceano', 'Masmorra', 'Pista', 'Prova', 'Origem', 'Verdade', 'Localização', 'Segredo',
-        'Magia', 'Habilidade', 'Língua', 'Parente', 'Morte', 'Injustiça', 'Desastre'
+        'Magia', 'Habilidade', 'Língua', 'Parente', 'Morte', 'Injustiça', 'Desastre', 'Plebeu', 'Energia'
     ]
 
     static verbos = [
@@ -30,8 +30,8 @@ class BotaoMissoes {
 
     static resultado() {
         return {
-            substantivo: BotaoMissoes.substantivos[DiceRoller.roll(1,BotaoMissoes.substantivos.length).results[0]-1],
-            verbo: BotaoMissoes.verbos[DiceRoller.roll(1,BotaoMissoes.verbos.length).results[0]-1]
+            substantivo: randomFromArray(BotaoMissoes.substantivos),
+            verbo: randomFromArray(BotaoMissoes.verbos)
         };
     }
 }
