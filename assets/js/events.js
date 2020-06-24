@@ -33,13 +33,20 @@ btn_missao.addEventListener('click', () => {
     command_controller.adicionaAoLog(`<strong>Missão: ${resultado.verbo} / ${resultado.substantivo}<strong>`);
 });
 
+btn_baralho.addEventListener('click', () => {
+    adicionaPergunta();
+    const resultado = Baralho.sacar();
+    if (resultado.mensagem) command_controller.adicionaAoLog(`<strong>${resultado.mensagem}<strong>`);
+    else command_controller.adicionaAoLog(`<strong>Carta: ${resultado.valor} ${resultado.simbolo}<strong>`);
+});
+
 window.addEventListener('keyup', e => {
     //envia o que estiver na caida de comando
-    if (e.key == "Enter" && document.activeElement === txtarea_command) 
+    if (e.key == "Enter" && document.activeElement === txtarea_command)
         enviaComando();
 
     if (txtarea_log.innerHTML == "<br>") txtarea_log.innerHTML = '';
-    
+
     Save.save();
 });
 
@@ -69,12 +76,14 @@ abre_anotacoes.addEventListener('click', () => { anotacoes.classList.add('active
 fecha_anotacoes.addEventListener('click', () => { anotacoes.classList.remove('active') });
 
 function atualizaComando() {
-    txtarea_command.value = pilha_comandos[pilha_comandos_index];
-    txtarea_command.classList.add('no-cursor');
-    setTimeout(() => {
-        txtarea_command.setSelectionRange(txtarea_command.value.length, txtarea_command.value.length);
-        txtarea_command.classList.remove('no-cursor');
-    }, .1)
+    if (pilha_comandos.length > 1) {
+        txtarea_command.value = pilha_comandos[pilha_comandos_index];
+        txtarea_command.classList.add('no-cursor');
+        setTimeout(() => {
+            txtarea_command.setSelectionRange(txtarea_command.value.length, txtarea_command.value.length);
+            txtarea_command.classList.remove('no-cursor');
+        }, .1)
+    }
 }
 
 function enviaComando() {

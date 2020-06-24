@@ -3,6 +3,7 @@ const btn_rolar = document.querySelector('#btn-rolar');
 const btn_sim_nao = document.querySelector('#btn-sim-nao');
 const btn_inspiracoes= document.querySelector('#btn-inspiracoes');
 const btn_missao= document.querySelector('#btn-missao');
+const btn_baralho = document.querySelector('#btn-baralho');
 const abre_anotacoes = document.querySelector('#abre-anotacoes');
 const fecha_anotacoes = document.querySelector('#fecha-anotacoes');
 const anotacoes = document.querySelector('#anotacoes');

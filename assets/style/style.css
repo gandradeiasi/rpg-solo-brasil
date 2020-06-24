@@ -53,6 +53,14 @@ header .container .hamburger { display: none; z-index: 999; }
 
 .copy { cursor: pointer; position: absolute; right: 0.5rem; top: 0.5rem }
 
+.espada { color: black; }
+
+.pau { color: black; }
+
+.copa { color: red; }
+
+.ouro { color: red; }
+
 @media (max-width: 768px) {
     body { height: initial; }
 
