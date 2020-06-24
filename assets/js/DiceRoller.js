@@ -19,7 +19,9 @@ class DiceRoller {
 
     static formatRoll(result) {
         let dices = "";
-        const modifier_format = `${result.modifier ? ` + ${result.modifier}` : ''}`
+        const modifier_sign = result.modifier ? (result.modifier < 0 ? '-' : '+') : null;
+        result.modifier = modifier_sign == "-" ? result.modifier * -1 : result.modifier;
+        const modifier_format = `${result.modifier ? ` ${modifier_sign} ${result.modifier}` : ''}`
         result.results.forEach((x,n) => {
             dices += x;
             if (n < result.results.length - 1) dices += " + ";

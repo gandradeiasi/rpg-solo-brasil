@@ -7,6 +7,11 @@ hamburger.addEventListener('click', () => {
     else mobile_menu.classList.add('active')
 });
 
+btn_rolar.addEventListener('click', () => {
+    txtarea_command.value = `/r ${dice_amount.value}d${dice_max.value}${dice_modifier.value < 0 ? `-${dice_modifier.value * -1}` : `+${dice_modifier.value}`}`
+    enviaComando();
+});
+
 btn_sim_nao.addEventListener('click', () => {
     adicionaPergunta();
     command_controller.adicionaAoLog(`<strong>${BotaoSimNao.resultado()}<strong>`);
@@ -20,6 +25,9 @@ btn_inspiracoes.addEventListener('click', () => {
 
 window.addEventListener('keyup', e => {
     if (e.key == "Enter" && document.activeElement === txtarea_command) enviaComando();
+
+    if (txtarea_log.innerHTML == "<br>") txtarea_log.innerHTML = '';
+    Save.save();
 });
 
 abre_anotacoes.addEventListener('click', () => { anotacoes.classList.add('active') });

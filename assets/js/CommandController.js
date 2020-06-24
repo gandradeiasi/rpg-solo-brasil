@@ -5,13 +5,14 @@ class CommandController {
                 "names": ["r", "roll", "rolar"],
                 "description": `Rola um dado de F face N vezes com ou sem modificador, no formado NdF+Modificador.\nExemplo 1: para rolar 2 dados de 8 faces, digite '/r 2d8'.\nExemplo 2: para rolar 1 dado de 10 faces com +3 de modificador, digite '/r d10+3'.`,
                 "function": input => {
-                    const regex = /([0-9]*)[d]{1}([0-9]+)\+*([0-9]*)/;
+                    const regex = /([0-9]*)[d]{1}([0-9]+)([+-]*)([0-9]*)/;
                     const parametro = this.reconheceParametro(input);
                     if (this.validaParametro(parametro, regex)) {
                         const roll_info = regex.exec(parametro);
                         const dice_amount = roll_info[1] ? roll_info[1] : 1;
                         const dice_max = roll_info[2];
-                        const modifier = roll_info[3] ? roll_info[3] : 0;
+                        const sign = roll_info[3] ? (roll_info[3][0] == "+" ? 1 : -1) : 1;
+                        const modifier = roll_info[4] ? roll_info[4] * sign : 0;
                         this.adicionaAoLog(`<strong>${DiceRoller.formatRoll(DiceRoller.roll(dice_amount, dice_max, modifier))}</strong>`);
                     }
                 }
@@ -46,15 +47,11 @@ class CommandController {
     limpaComando() { txtarea_command.value = "" }
 
     adicionaAoLog(string) {
-        if (txtarea_log.dataset.placeholder) {
-            txtarea_log.dataset.placeholder = '';
-            txtarea_log.innerHTML = "";
-            txtarea_log.setAttribute('contenteditable',true);
-        }
         txtarea_log.innerHTML += string + "<br><br>";
         this.limpaComando();
         txtarea_log.scrollBy(0,99999);
         txtarea_command.focus();
+        Save.save();
     }
 
     reconheceComando(input) {

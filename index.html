@@ -33,8 +33,7 @@
     <div class="main">
         <div class="container">
             <div class="col-1">
-                <div contenteditable=false id="txtarea-log" data-placeholder="true" class="log-text">Sua aventura está prestes a ser
-                    escrita...</div>
+                <div contenteditable id="txtarea-log" class="log-text"></div>
                 <div class="command">
                     <div class="textarea-button">
                         <textarea id="txtarea-command"
@@ -47,10 +46,18 @@
             <div class="col-2">
                 <div class="notes" id="anotacoes">
                     <p class="title">Anotações</p>
-                    <textarea placeholder="Faça aqui suas anotações" class="notes-text"></textarea>
+                    <textarea placeholder="Faça aqui suas anotações" id="txtarea-notes" class="notes-text"></textarea>
                     <div class="fechar" id="fecha-anotacoes">Fechar</div>
                 </div>
                 <div class="buttons">
+                    <div class="rola-dado">
+                        <input id="dice-amount" min="1" value="1" type="number">
+                        d
+                        <input id="dice-max" min="1" value="6" type="number">
+                        +
+                        <input id="dice-modifier" type="number" value="0">
+                        <button id="btn-rolar">Rolar</button>
+                    </div>
                     <button id="btn-sim-nao">Sim/Não</button>
                     <button id="btn-inspiracoes">Inspiração</button>
                     <!-- <button id="btn-missoes">Missão</button>
@@ -75,6 +82,7 @@
     <script src="assets/js/BotaoSimNao.js"></script>
     <script src="assets/js/BotaoInspiracoes.js"></script>
     <script src="assets/js/CommandController.js"></script>
+    <script src="assets/js/Save.js"></script>
     <script src="assets/js/events.js"></script>
     <script src="assets/js/menu.js"></script>
 </body>
