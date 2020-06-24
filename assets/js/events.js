@@ -23,6 +23,12 @@ btn_inspiracoes.addEventListener('click', () => {
     command_controller.adicionaAoLog(`<strong>Inspiração: ${resultado.substantivo} / ${resultado.verbo}<strong>`);
 });
 
+btn_missao.addEventListener('click', () => {
+    adicionaPergunta();
+    const resultado = BotaoMissoes.resultado();
+    command_controller.adicionaAoLog(`<strong>Missão: ${resultado.verbo} / ${resultado.substantivo}<strong>`);
+});
+
 window.addEventListener('keyup', e => {
     if (e.key == "Enter" && document.activeElement === txtarea_command) enviaComando();
 
