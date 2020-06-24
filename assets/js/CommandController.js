@@ -37,12 +37,17 @@ class CommandController {
     executaComando(input) {
         let comando = this.reconheceComando(input);
         let comando_existe = false;
+        
+        const input_sem_quebra = input.replace(/\n/g,'');
 
         this.comandos.forEach(x => { 
             if (x.names.includes(comando))  {
                 this.limpaComando();
-                x.function(input);
+                x.function(input_sem_quebra);
                 comando_existe = true;
+                if (pilha_comandos[pilha_comandos.length-2] != input_sem_quebra) 
+                    pilha_comandos.splice(pilha_comandos.length-1,0,input_sem_quebra)
+                pilha_comandos_index = pilha_comandos.length -1;
             }
         });
 

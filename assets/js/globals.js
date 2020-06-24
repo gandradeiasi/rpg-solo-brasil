@@ -17,3 +17,6 @@ const dice_max = document.querySelector('#dice-max');
 const dice_modifier = document.querySelector('#dice-modifier');
 const copy_log = document.querySelector('#copy-log');
 const copy_notes = document.querySelector('#copy-notes');
+
+let pilha_comandos = [''];
+let pilha_comandos_index = null;

@@ -34,15 +34,48 @@ btn_missao.addEventListener('click', () => {
 });
 
 window.addEventListener('keyup', e => {
-    if (e.key == "Enter" && document.activeElement === txtarea_command) enviaComando();
+    //envia o que estiver na caida de comando
+    if (e.key == "Enter" && document.activeElement === txtarea_command) 
+        enviaComando();
 
     if (txtarea_log.innerHTML == "<br>") txtarea_log.innerHTML = '';
+    
     Save.save();
+});
+
+window.addEventListener('keydown', e => {
+    //busca comandos
+    if (!txtarea_command.value || txtarea_command.value[0] == '/') {
+        switch (e.key) {
+            case "ArrowUp":
+                if (pilha_comandos_index > 0) {
+                    pilha_comandos_index--;
+                    atualizaComando();
+                }
+                else atualizaComando();
+                break;
+            case "ArrowDown":
+                if (pilha_comandos_index < pilha_comandos.length - 1) {
+                    pilha_comandos_index++;
+                    atualizaComando();
+                }
+                break;
+        }
+    }
 });
 
 abre_anotacoes.addEventListener('click', () => { anotacoes.classList.add('active') });
 
 fecha_anotacoes.addEventListener('click', () => { anotacoes.classList.remove('active') });
+
+function atualizaComando() {
+    txtarea_command.value = pilha_comandos[pilha_comandos_index];
+    txtarea_command.classList.add('no-cursor');
+    setTimeout(() => {
+        txtarea_command.setSelectionRange(txtarea_command.value.length, txtarea_command.value.length);
+        txtarea_command.classList.remove('no-cursor');
+    }, .1)
+}
 
 function enviaComando() {
     let input = txtarea_command.value;
@@ -50,6 +83,7 @@ function enviaComando() {
     if (!input) return;
 
     if (command_controller.reconheceComando(input)) command_controller.executaComando(input);
+    else if (/^\n/.test(input)) command_controller.limpaComando();
     else command_controller.adicionaAoLog(input);
 }
 
