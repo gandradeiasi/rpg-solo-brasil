@@ -1,5 +1,7 @@
 class Baralho {
     static baralho = [
+        { naipe: "", valor: "Curinga", simbolo: "<span class='espada'>♠</span><span class='copa'>♥</span><span class='pau'>♣</span><span class='ouro'>♦</span>" },
+        { naipe: "", valor: "Curinga", simbolo: "<span class='espada'>♠</span><span class='copa'>♥</span><span class='pau'>♣</span><span class='ouro'>♦</span>" },
         { naipe: "espada", valor: "A", simbolo: "<span class='espada'>♠</span>" },
         { naipe: "espada", valor: "1", simbolo: "<span class='espada'>♠</span>" },
         { naipe: "espada", valor: "2", simbolo: "<span class='espada'>♠</span>" },
