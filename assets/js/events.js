@@ -16,6 +16,16 @@ btn_rolar.addEventListener('click', () => {
     enviaComando();
 });
 
+btn_vantagem.addEventListener('click', () => {
+    txtarea_command.value = `/van ${dice_amount.value}d${dice_max.value}}`
+    enviaComando();
+});
+
+btn_desvantagem.addEventListener('click', () => {
+    txtarea_command.value = `/des ${dice_amount.value}d${dice_max.value}}`
+    enviaComando();
+});
+
 btn_sim_nao.addEventListener('click', () => {
     adicionaPergunta();
     command_controller.adicionaAoLog(`<strong>${BotaoSimNao.resultado()}<strong>`);

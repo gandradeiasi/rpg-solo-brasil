@@ -1,5 +1,7 @@
 const btn_enviar = document.querySelector('#btn-enviar');
 const btn_rolar = document.querySelector('#btn-rolar');
+const btn_vantagem = document.querySelector('#btn-vantagem');
+const btn_desvantagem = document.querySelector('#btn-desvantagem');
 const btn_sim_nao = document.querySelector('#btn-sim-nao');
 const btn_inspiracoes= document.querySelector('#btn-inspiracoes');
 const btn_missao= document.querySelector('#btn-missao');
