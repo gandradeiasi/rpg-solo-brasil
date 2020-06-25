@@ -15,9 +15,13 @@ class Save {
     }
 }
 
-if (Save.log && !Save.log.includes("undefined"))
+if (Save.log && !Save.log.includes("undefined")) {
     txtarea_log.innerHTML = Save.log;
-if (Save.notes && !Save.notes.includes("undefined"))
+    txtarea_log.scrollBy(0, 99999);
+}
+if (Save.notes && !Save.notes.includes("undefined")) {
     txtarea_notes.value = Save.notes;
+    txtarea_notes.scrollBy(0, 99999);
+}
 
 
