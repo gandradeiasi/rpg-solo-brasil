@@ -43,7 +43,7 @@ btn_baralho.addEventListener('click', () => {
 btn_personagem.addEventListener('click', () => {
     adicionaPergunta();
     const resultado = BotaoPersonagem.resultado();
-    command_controller.adicionaAoLog(`<strong>Personagem: ${resultado.nome}, o(a) ${resultado.oficio} ${resultado.caracteristica} que está ${resultado.estado}<strong>`);
+    command_controller.adicionaAoLog(`<strong>Personagem: ${BotaoPersonagem.formataGeneroAleatorio()}<strong>`);
 });
 
 window.addEventListener('keyup', e => {
