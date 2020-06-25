@@ -86,7 +86,7 @@ class Baralho {
         }
         else {
             Baralho.embaralhar();
-            return { mensagem: "Acabaram as cartas do baralho. Embaralhando... Você pode comprar uma carta agora." }
+            return { mensagem: "Acabaram as cartas do baralho. Embaralhando... Você pode sacar uma carta agora." }
         }
     }
 }

@@ -16,7 +16,8 @@ class BotaoMissoes {
         'Vítima', 'Crime', 'Ruína', 'Caverna', 'Lago', 'Beco', 'Guilda', 'Mercado', 'Ordem', 'Farsante',
         'Escravo', 'Rico', 'Pobre', 'Tirano', 'Lenda', 'Ponte', 'Abrigo', 'Torre', 'Cripta',
         'Cemitério', 'Oceano', 'Masmorra', 'Pista', 'Prova', 'Origem', 'Verdade', 'Localização', 'Segredo',
-        'Magia', 'Habilidade', 'Língua', 'Parente', 'Morte', 'Injustiça', 'Desastre', 'Plebeu', 'Energia'
+        'Magia', 'Habilidade', 'Língua', 'Parente', 'Morte', 'Injustiça', 'Desastre', 'Plebeu', 'Energia',
+        'Ritual'
     ]
 
     static verbos = [
@@ -25,7 +26,7 @@ class BotaoMissoes {
         'Transportar', 'Coletar', 'Ajudar', 'Salvar', 'Interrogar',
         'Investigar', 'Espionar', 'Desmascarar', 'Libertar', 'Roubar', 'Matar',
         'Reviver', 'Reconstruir', 'Construir', 'Explorar', 'Encontrar', 'Descobrir',
-        'Aprender', 'Vingar', 'Fugir'
+        'Aprender', 'Vingar', 'Fugir', 'Interromper'
     ]
 
     static resultado() {

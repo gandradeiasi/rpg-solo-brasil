@@ -43,7 +43,7 @@ btn_baralho.addEventListener('click', () => {
 btn_personagem.addEventListener('click', () => {
     adicionaPergunta();
     const resultado = BotaoPersonagem.resultado();
-    command_controller.adicionaAoLog(`<strong>Personagem: ${resultado.personalidade} / ${resultado.caracteristica}<strong>`);
+    command_controller.adicionaAoLog(`<strong>Personagem: ${resultado.nome}, o(a) ${resultado.oficio} ${resultado.caracteristica} que está ${resultado.estado}<strong>`);
 });
 
 window.addEventListener('keyup', e => {
