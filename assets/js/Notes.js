@@ -17,11 +17,11 @@ class Notes {
 
     static render() {
         notes_box.innerHTML = `
-        <div class="add">
-                <div class="botao active" id="btn-adiciona-nota">
+            <div class="add">
+                <div class="botao active hover" id="btn-adiciona-nota">
                     <span class="plus">+</span> Adicionar Nota
                 </div>
-                <div class="input" id="add-input">
+                <div class="input hover" id="add-input">
                     <input id="add-input-title" type="text" placeholder="Título da nota">
                     <button id="btn-adicionar">Adicionar</button>
                 </div>
@@ -30,7 +30,7 @@ class Notes {
 
         lista_notas.forEach(x => {
             notes_box.innerHTML += `
-                <div data-id="${x.id}" class="note">
+                <div data-id="${x.id}" class="note hover">
                     <div>${x.title}</div>
                     <button data-id="${x.id}" class="excluir-nota">Excluir</button>
                 </div>
