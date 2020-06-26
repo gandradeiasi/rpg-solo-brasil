@@ -9,8 +9,6 @@ hamburger.addEventListener('click', () => {
 
 copy_log.addEventListener('click', () => copy(txtarea_log.innerText, "Log copiado para a área de transferência"));
 
-copy_notes.addEventListener('click', () => copy(txtarea_notes.value, "Anotações copiadas para a área de transferência"));
-
 btn_rolar.addEventListener('click', () => {
     txtarea_command.value = `/r ${dice_amount.value}d${dice_max.value}${dice_modifier.value < 0 ? `-${dice_modifier.value * -1}` : `+${dice_modifier.value}`}`
     enviaComando();
@@ -55,6 +53,8 @@ btn_personagem.addEventListener('click', () => {
     const resultado = BotaoPersonagem.resultado();
     command_controller.adicionaAoLog(`<strong>Personagem: ${BotaoPersonagem.formataGeneroAleatorio()}<strong>`);
 });
+
+fecha_modal.addEventListener('click', () => Modal.fecha());
 
 window.addEventListener('keyup', e => {
     //envia o que estiver na caida de comando

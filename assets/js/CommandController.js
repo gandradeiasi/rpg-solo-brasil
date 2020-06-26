@@ -35,7 +35,7 @@ class CommandController {
                 }
             },
             {
-                "names": ["limpa", "limpar", "clear", "clean"],
+                "names": ["limpa", "limpar", "clear", "clean", "c"],
                 "description": `Limpa o log.`,
                 "function": () => { txtarea_log.innerHTML = "" }
             },

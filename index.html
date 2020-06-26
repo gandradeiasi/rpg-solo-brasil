@@ -18,7 +18,7 @@
                 <span class="text">RPG SOLO</span>
                 <img src="assets/img/logo-animation.png">
             </div>
-            <div class="anotacoes" id="abre-anotacoes">Anotações</div>
+            <div class="anotacoes" id="abre-anotacoes">Notas</div>
             <ul class="menu">
                 <li data-menu-slot="1"></li>
             </ul>
@@ -50,9 +50,8 @@
             </div>
             <div class="col-2">
                 <div class="notes" id="anotacoes">
-                    <img id="copy-notes" class="copy" alt="Copiar" title="Copiar" src="assets/img/copy-icon.png">
-                    <p class="title">Anotações</p>
-                    <textarea placeholder="Faça aqui suas anotações" id="txtarea-notes" class="notes-text"></textarea>
+                    <p class="title">Notas</p>
+                    <div id="notes-box" class="notes-box"></div>
                     <div class="fechar" id="fecha-anotacoes">Fechar</div>
                 </div>
                 <div class="buttons">
@@ -77,6 +76,18 @@
     </div>
     <textarea readonly id="copy" class="txtarea-copy"></textarea>
 
+    <div class="modal" id="modal">
+        <div class="body">
+            <div class="top">
+                <div class="title"></div>
+                <div class="fecha-modal" id="fecha-modal">x</div>
+            </div>
+            <div class="content">
+
+            </div>
+        </div>
+    </div>
+
     <script src="assets/js/globals.js"></script>
     <script src="assets/js/arrayHelper.js"></script>
     <script src="assets/js/DiceRoller.js"></script>
@@ -87,6 +98,8 @@
     <script src="assets/js/Baralho.js"></script>
     <script src="assets/js/CommandController.js"></script>
     <script src="assets/js/Save.js"></script>
+    <script src="assets/js/Modal.js"></script>
+    <script src="assets/js/Notes.js"></script>
     <script src="assets/js/events.js"></script>
     <script src="assets/js/menu.js"></script>
 </body>
