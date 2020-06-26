@@ -27,7 +27,7 @@ class Notes {
                 </div>
             `
         });
-        
+
         notes_box.querySelectorAll('.note').forEach(x => {
             const note = lista_notas[x.dataset.id];
 
@@ -46,7 +46,11 @@ class Notes {
                 txtarea.value = note.content;
                 Modal.abre();
                 txtarea.focus();
-                modal.querySelector('.fecha-modal').addEventListener('click', () => Notes.render())
+                modal.querySelector('.fecha-modal').addEventListener('click', () => {
+                    title.setAttribute('contenteditable','false');
+                    title.setAttribute('data-id', '');
+                    Notes.render();
+                })
             });
         });
 
