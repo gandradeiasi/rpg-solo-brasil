@@ -35,6 +35,16 @@ class CommandController {
                 }
             },
             {
+                "names": ["calc", "calculadora", "calcular", "calculate", "calcula"],
+                "description": "Realiza uma conta matemática que utilize os eperadores +,-,* e /",
+                "function": input => {
+                    const parametro = this.reconheceParametro(input);
+                    if (this.validaParametro(parametro, /(\d\s*[+\-*/]\s*)+\s*\d+$/)) {
+                        this.adicionaAoLog(`<strong>${parametro.replace(/\s+/g, '')} = ${eval(parametro)}`);
+                    }
+                }
+            },
+            {
                 "names": ["carta", "baralho", "sacar", "saca", "card"],
                 "description": 'Saca uma carta do baralha. Caso o baralho esteja vazio, embaralha as cartas.',
                 "function": () => {
@@ -49,7 +59,7 @@ class CommandController {
                 "function": () => { txtarea_log.innerHTML = "" }
             },
             {
-                "names": ["help", "ajuda"],
+                "names": ["help", "ajuda", "ajudar", "comando", "comandos", "command", "commands"],
                 "description": `Mostra a lista de comandos disponíveis.`,
                 "function": () => {
                     let message = "<br>Um comando é utilzado adicionando uma barra antes dele, nesse formato: '/comando'.<br><br>";
@@ -98,7 +108,9 @@ class CommandController {
         else return null;
     }
 
-    reconheceParametro(input) { return /\/.*\s(.*)/.exec(input.replace(/\n/g, ''))[1]; }
+    reconheceParametro(input) { 
+        return /^\/\w+\s(.*)/g.exec(input.replace(/\n/g, ''))[1]; 
+    }
 
     validaParametro(parametro, regex) {
         if (regex.test(parametro)) return true;

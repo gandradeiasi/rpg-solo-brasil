@@ -21,15 +21,15 @@ class DiceRoller {
         const modifier_sign = result.modifier ? (result.modifier < 0 ? '-' : '+') : null;
         result.modifier = modifier_sign == "-" ? result.modifier * -1 : result.modifier;
         const modifier_format = `${result.modifier ? ` ${modifier_sign} ${result.modifier}` : ''}`
-        return `Rolando ${result.results.length}d${result.dice_max}${modifier_format} : ${DiceRoller.formataDices(result)}${modifier_format} || Soma = ${result.total}`
+        return `Rolando ${result.results.length}d${result.dice_max}${modifier_format} : ${DiceRoller.formataDices(result)}${modifier_format}${result.results.length > 1 ? ` || Soma = ${result.total}` : ''}`
     }
 
     static formataVantagem(result) {
-        return `Rolando ${result.results.length}d${result.dice_max} : ${DiceRoller.formataDices(result)} || Maior = ${result.results.reduce((x,y) => y > x ? y : x, 0)}`
+        return `Rolando ${result.results.length}d${result.dice_max} : ${DiceRoller.formataDices(result)}${result.results.length > 1 ? ` || Maior = ${result.results.reduce((x,y) => y > x ? y : x, 0)}` : ''}`
     }
 
     static formataDesvantagem(result) {
-        return `Rolando ${result.results.length}d${result.dice_max} : ${DiceRoller.formataDices(result)} || Menor = ${result.results.reduce((x,y) => y < x ? y : x, result.results[0])}`
+        return `Rolando ${result.results.length}d${result.dice_max} : ${DiceRoller.formataDices(result)}${result.results.length > 1 ? ` || Menor = ${result.results.reduce((x,y) => y < x ? y : x, result.results[0])}` : ''}`
     }
 
     static formataDices(result) {
