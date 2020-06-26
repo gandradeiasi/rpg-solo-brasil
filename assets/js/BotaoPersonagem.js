@@ -31,7 +31,7 @@ class BotaoPersonagem {
         'interessado(a)', 'desinteressado(a)', 'ocupado(a)', 'incrédulo(a)', 'desolado(a)', 'iludido(a)', 'desiludido(a)',
         'famoso(a)', 'folgado(a)', 'maltrapilho(a)', 'teimoso(a)', 'supérfulo(a)', 'ignorante', 'maneiro(a)', 'deselegante',
         'inconveniente', 'útil', 'inútil', 'profissional', 'iniciante', 'lendário(a)', 'caipira', 'urbano(a)', 'nativo(a)', 
-        'vegetarian(a)', 'vegano(a)', 'ativista'
+        'vegetarian(a)', 'vegano(a)', 'ativista', 'aposentado(a)', 'falido(a)'
     ]
 
     static oficios = [
@@ -51,7 +51,7 @@ class BotaoPersonagem {
         'colecionador(a)', 'aprendiz', 'faxineiro(a)', 'pedinte', 'exorcista', 'explorador(a)', 'aventureiro(a)', 'investidor(a)',
         'agricultor(a)', 'negociante', 'cientista', 'alveneiro(a)', 'escultor(a)', 'ocultista', 'instrutor(a)', 'herói/heroína', 'rei/rainha',
         'prefeito(a)', 'chapeleiro(a)', 'lojista', 'especialista', 'poeta', 'escriba', 'agiota', 'político(a)', 'factótum', 'faz-tudo',
-        'recepcionista', 'secretário(a)', 'ministro(a)'
+        'recepcionista', 'secretário(a)', 'ministro(a)', 'psicólogo(a)'
     ]
 
     static silabas = [
@@ -68,33 +68,54 @@ class BotaoPersonagem {
         'ben', 'ja', 'min', 'klin'
     ]
 
+    static caracteres = [
+        '-', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+        'r', 's', 't', 'u', 'v', 'x', 'y', 'z', 'w', 'ã', 'á', 'ä', 'ê', 'é', 'ë', 'í', 'i', 'ü',
+        'ú', 'ô', 'õ', 'ó', 'ý', 'ÿ'
+    ]
+
     static conjuntosProibidos = [
-        /^-/, /-$/, /n[bpmhrlh]/, /m[cdfghjklnqrstvxz]/, /aa$/, /[aeiou]{2,}/,
+        /^-/, /-$/, /n[bpmhrlh]/, /m[cdfghjklnqrstvxz]/, 
+        /[aeiouyáäêéëíiüúôóýÿ]{4}/,/[áäêéëíiüúôóýÿ].*[áäêéëíiüúôóýÿ]/,
         /[a-z][aeiou]s[a-z][aeiou]s/, /[a-z]r[aeiou][a-z]r[aeiou]/, /l[mr]/, /kli/, /ljul/,
         /^dribe/, /drigro/, /ogr/, /brf/, /yelyel/, /^i/, /lhaye/, /robforga/, /kq/,
-        /[a-z]w/, /w[bcdfghjklmnpqrstwyzx]/, /[a-z]h./, /.r.+r./, /^k[bcdfghjklmnpqrstwyzx]/,
+        /[a-z]w/, /w[bcdfghjklmnpqrstwyvzx]/, /[a-z]h./, /.r.+r./, /^k[bcdfghjklmnpqrstwyvzx]/,
         /ng.$/, /peid/, /put/, /merd/, /porr/, /caral/, /buce/, /o[sz][aeiou]/, /aeu/,
         /meme/, /mene/, /memi/, /ceio/, /seio/, /yi/, /iy/, /hole$/, /asma/,
         /aa$/, /oo$/, /uu$/, /ee$/, /ii$/, /^aa/, /^ee/, /^ii/, /^uu/, /^oo/, /cg/, /^que/, /^heto/,
         /^reto/, /deita$/, /deito$/, /.f.+f./, /sce/, /sci/, /mega/, /loc[auo]/, /-.$/, /pa[nm]$/,
         /sr/, /[ck]ju/, /pedof/, /ant[ao]/, /ta[ul]co/, /let[ei]/, /tara/, /n.+n.+n/, /mam[aioue]/,
-        /^kv/, /orma/
+        /^kv/, /orma/, /bv$/, /[bcdfghjklmnpqrstwyvzx]{4}/, /[bcdfghjklmnpqrstwyvzx]{2}-[bcdfghjklmnpqrstwyvzx]{2}/,
+        /^[bcdfghjklmnpqrstwyvzx][skqwtpsdfgjkzxcvbnm]/, /pica/, /^-/, /-$/, /^[bcdfghjklmnpqrstwyvzx]-/,
+        /pa[ul]$/, /[sc]entona/, /[bcdfghjklmnpqrstwyvzx]x/, /x[bcdfghjklmnpqrstwyvzx]/, /a{3}/,
+        /e{3}/,/o{3}/,/i{3}/,/u{3}/,/y{2}/, /[bcdfghjklmnpqrstwyvzx]h$/, /[bcdfhjkmnpqstwyvzx][nm]/, /cq/, /qc/,
+        /([áäêéëíiüúôóýÿ])[áäêéëíiüúôóýÿ]\1/
     ]
 
     static resultado() {
         return {
-            nome: BotaoPersonagem.nome(),
+            nome: BotaoPersonagem.nome(true),
             caracteristica: randomFromArray(BotaoPersonagem.caracteristicas),
             oficio: randomFromArray(BotaoPersonagem.oficios)
         }
     }
 
-    static nome() {
-        let nome = "";
-        let num_silabas = parseInt(Math.random() * 3 + 2);
-        for (let i = 0; i < num_silabas; i++) nome += randomFromArray(BotaoPersonagem.silabas);
+    static nome(caracteres = false) {
+        let min = 2;
+        let padding = 3;
+        let array = BotaoPersonagem.silabas;
 
-        if (nome.length > 9 || BotaoPersonagem.conjuntosProibidos.some(x => x.test(nome)))
+        if (caracteres) {
+            min = 3;
+            padding = 9;
+            array = BotaoPersonagem.caracteres;
+        }
+
+        let nome = "";
+        let num = parseInt(Math.random() * padding + min);
+        for (let i = 0; i < num; i++) nome += randomFromArray(array);
+
+        if (nome.length > 9 || BotaoPersonagem.conjuntosProibidos.some(x => nome.match(x)))
             return BotaoPersonagem.nome();
 
         if (nome.includes('-')) nome = nome.split('-')[0] + '-' + nome.split('-')[1].replace(/^./, nome.split('-')[1][0].toUpperCase());
