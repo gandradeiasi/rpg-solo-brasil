@@ -1,10 +1,9 @@
 class Modal {
-    static preenche(title, content) {
+    static abre(title, content) {
         modal.querySelector('.title').innerHTML = title;
         modal.querySelector('.content').innerHTML = content;
+        modal.classList.add('active');
     }
-
-    static abre() { modal.classList.add('active'); }
 
     static fecha() { modal.classList.remove('active'); }
 }

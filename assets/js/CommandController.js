@@ -45,8 +45,7 @@ class CommandController {
                 "function": () => {
                     let message = "<br>Um comando é utilzado adicionando uma barra antes dele, nesse formato: '/comando'.<br><br>";
                     this.comandos.forEach((x, n) => message += `<strong>${x.names.join(', ')}</strong>: ${x.description}${n == this.comandos.length - 1 ? '' : '<br><br>'}`)
-                    Modal.preenche('Comandos', message);
-                    Modal.abre();
+                    Modal.abre('Comandos', message);
                 }
             }
         ];
