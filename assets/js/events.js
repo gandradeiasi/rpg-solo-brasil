@@ -68,7 +68,7 @@ window.addEventListener('keyup', e => {
 
 window.addEventListener('keydown', e => {
     //busca comandos
-    if (!txtarea_command.value || txtarea_command.value[0] == '/') {
+    if (document.activeElement == txtarea_command && !txtarea_command.value || txtarea_command.value[0] == '/') {
         switch (e.key) {
             case "ArrowUp":
                 if (pilha_comandos_index > 0) {

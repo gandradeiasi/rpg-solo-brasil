@@ -43,9 +43,10 @@ class CommandController {
                 "names": ["help", "ajuda"],
                 "description": `Mostra a lista de comandos disponíveis.`,
                 "function": () => {
-                    let message = "Um comando é utilzado adicionando uma barra antes dele, nesse formato: '/comando'.\n\n";
-                    this.comandos.forEach((x, n) => message += `${x.names.join(', ')}: ${x.description}${n == this.comandos.length - 1 ? '' : '\n\n'}`)
-                    alert(message);
+                    let message = "<br>Um comando é utilzado adicionando uma barra antes dele, nesse formato: '/comando'.<br><br>";
+                    this.comandos.forEach((x, n) => message += `<strong>${x.names.join(', ')}</strong>: ${x.description}${n == this.comandos.length - 1 ? '' : '<br><br>'}`)
+                    Modal.preenche('Comandos', message);
+                    Modal.abre();
                 }
             }
         ];
