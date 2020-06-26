@@ -14,7 +14,7 @@ class CommandController {
             },
             {
                 "names": ["vantagem", "vant", "van"],
-                "description": `Faz uma rolagem igual ao comando '/r', mas destacando o resultado maior`,
+                "description": `Faz uma rolagem igual ao comando '/r', mas destacando o resultado maior.`,
                 "function": input => {
                     const parametro = this.reconheceParametro(input);
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
@@ -25,13 +25,22 @@ class CommandController {
             },
             {
                 "names": ["desvantagem", "desvant", "des"],
-                "description": `Faz uma rolagem igual ao comando '/r', mas destacando o resultado menor`,
+                "description": `Faz uma rolagem igual ao comando '/r', mas destacando o resultado menor.`,
                 "function": input => {
                     const parametro = this.reconheceParametro(input);
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
                         const info = DiceRoller.infoFromParam(parametro);
                         this.adicionaAoLog(`<strong>${DiceRoller.formataDesvantagem(DiceRoller.roll(info.dice_amount, info.dice_max))}</strong>`);
                     }
+                }
+            },
+            {
+                "names": ["carta", "baralho", "sacar", "saca", "card"],
+                "description": 'Saca uma carta do baralha. Caso o baralho esteja vazio, embaralha as cartas.',
+                "function": () => {
+                    const resultado = Baralho.sacar();
+                    if (resultado.mensagem) command_controller.adicionaAoLog(`<strong>${resultado.mensagem}<strong>`);
+                    else command_controller.adicionaAoLog(`<strong>Carta: ${resultado.valor} ${resultado.simbolo}<strong>`);
                 }
             },
             {
