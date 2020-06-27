@@ -9,7 +9,9 @@ class CommandController {
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
                         const info = DiceRoller.infoFromParam(parametro);
                         this.adicionaAoLog(`<strong>${DiceRoller.formataSoma(DiceRoller.roll(info.dice_amount, info.dice_max, info.modifier))}</strong>`);
+                        return true;
                     }
+                    return false;
                 }
             },
             {
@@ -20,7 +22,9 @@ class CommandController {
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
                         const info = DiceRoller.infoFromParam(parametro);
                         this.adicionaAoLog(`<strong>${DiceRoller.formataVantagem(DiceRoller.roll(info.dice_amount, info.dice_max))}</strong>`);
+                        return true;
                     }
+                    return false;
                 }
             },
             {
@@ -31,7 +35,9 @@ class CommandController {
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
                         const info = DiceRoller.infoFromParam(parametro);
                         this.adicionaAoLog(`<strong>${DiceRoller.formataDesvantagem(DiceRoller.roll(info.dice_amount, info.dice_max))}</strong>`);
+                        return true;
                     }
+                    return false;
                 }
             },
             {
@@ -41,7 +47,9 @@ class CommandController {
                     const parametro = this.reconheceParametro(input);
                     if (this.validaParametro(parametro, /(\d\s*[+\-*/]\s*)+\s*\d+$/)) {
                         this.adicionaAoLog(`<strong>${parametro.replace(/\s+/g, '')} = ${eval(parametro)}`);
+                        return true;
                     }
+                    return false;
                 }
             },
             {
@@ -51,12 +59,16 @@ class CommandController {
                     const resultado = Baralho.sacar();
                     if (resultado.mensagem) command_controller.adicionaAoLog(`<strong>${resultado.mensagem}<strong>`);
                     else command_controller.adicionaAoLog(`<strong>Carta: ${resultado.valor} ${resultado.simbolo}<strong>`);
+                    return true;
                 }
             },
             {
                 "names": ["limpa", "limpar", "clear", "clean", "c"],
                 "description": `Limpa o log.`,
-                "function": () => { txtarea_log.innerHTML = "" }
+                "function": () => {
+                    txtarea_log.innerHTML = "";
+                    return true;
+                }
             },
             {
                 "names": ["help", "ajuda", "ajudar", "comando", "comandos", "command", "commands"],
@@ -65,6 +77,7 @@ class CommandController {
                     let message = "<br>Um comando é utilzado adicionando uma barra antes dele, nesse formato: '/comando'.<br><br>";
                     this.comandos.forEach((x, n) => message += `<strong>${x.names.join(', ')}</strong>: ${x.description}${n == this.comandos.length - 1 ? '' : '<br><br>'}`)
                     Modal.abre('Comandos', message);
+                    return true;
                 }
             }
         ];
@@ -78,12 +91,14 @@ class CommandController {
 
         this.comandos.forEach(x => {
             if (x.names.includes(comando)) {
-                this.limpaComando();
-                x.function(input_sem_quebra);
                 comando_existe = true;
-                if (pilha_comandos[pilha_comandos.length - 2] != input_sem_quebra)
-                    pilha_comandos.splice(pilha_comandos.length - 1, 0, input_sem_quebra)
-                pilha_comandos_index = pilha_comandos.length - 1;
+                const function_ok = x.function(input_sem_quebra);
+                if (function_ok) {
+                    this.limpaComando();
+                    if (pilha_comandos[pilha_comandos.length - 2] != input_sem_quebra)
+                        pilha_comandos.splice(pilha_comandos.length - 1, 0, input_sem_quebra)
+                    pilha_comandos_index = pilha_comandos.length - 1;
+                }
             }
         });
 
@@ -108,13 +123,14 @@ class CommandController {
         else return null;
     }
 
-    reconheceParametro(input) { 
-        return /^\/\w+\s(.*)/g.exec(input.replace(/\n/g, ''))[1]; 
+    reconheceParametro(input) {
+        return /^\/\w+\s(.*)/g.exec(input.replace(/\n/g, ''))[1];
     }
 
     validaParametro(parametro, regex) {
         if (regex.test(parametro)) return true;
         else {
+            txtarea_command.value = txtarea_command.value.replace(/\n/g, '');
             alert('O valor inserido para esse comando é inválido');
             return false;
         }
