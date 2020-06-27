@@ -14,7 +14,7 @@ button { cursor: pointer; }
 header { background-color: black; color: white; padding: 1rem 0; }
 header .container { display: flex; align-items: center; justify-content: space-between; }
 header .container .logo { font-size: 20px; font-weight: bold; position: relative; display: flex; align-items: center; }
-header .container .logo .text { font-size: 20px; transition: 300ms ease-out; cursor: default; background-color: black; font-weight: bold; margin-right: -70px; z-index: 1; }
+header .container .logo .text { font-size: 20px; margin: 0; transition: 300ms ease-out; cursor: default; background-color: black; font-weight: bold; margin-right: -70px; z-index: 1; }
 header .container .logo .text:hover { margin-right: 6px; }
 header .container .anotacoes { display: none; }
 header .container ul { display: flex; justify-content: space-around; margin: 0; }
