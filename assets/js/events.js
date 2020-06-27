@@ -75,9 +75,12 @@ fecha_modal.addEventListener('click', () => Modal.fecha());
 window.addEventListener('keyup', e => {
     if (e.key == "Shift") shift = false;
 
-    //envia o que estiver na caida de comando
-    else if (!shift && e.key == "Enter" && document.activeElement === txtarea_command)
-        enviaComando();
+    else if (e.key == "Enter") {
+        if (!shift && document.activeElement === txtarea_command)
+            enviaComando();
+        else if (document.activeElement.id ? document.activeElement.id == "add-input-title" : false )
+            document.querySelector('#btn-adicionar').click();
+    }
 
     else if (txtarea_log.innerHTML == "<br>") txtarea_log.innerHTML = '';
 
