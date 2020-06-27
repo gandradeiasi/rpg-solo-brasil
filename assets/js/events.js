@@ -38,6 +38,11 @@ btn_baralho.addEventListener('click', () => {
     enviaComando();
 });
 
+modal.addEventListener('click', e => {
+    if (!e.path.some(x => x.classList ? x.classList.contains('body') : false))
+        Modal.fecha();
+});
+
 btn_tabelas_geradores.addEventListener('click', () => {
     Modal.abre('Tabelas e Geradores', `
         <br>

@@ -35,7 +35,8 @@ class BotaoInspiracoes {
         'Despedir', 'Renunciar', 'Construir', 'Destruir', 'Cortar', 'Prover', 'Confirmar',
         'Confiar', 'Estudar', 'Analisar', 'Revidar', 'Defender', 'Torturar', 'Sarar', 'Cuidar',
         'Montar', 'Tramar', 'Focar', 'Juntar', 'Separar', 'Trazer', 'Levar', 'Cultivar', 'Vestir',
-        'Copiar', 'Diferenciar', 'Ameaçar', 'Celebrar', 'Denuciar', 'Raspar', 'Segurar', 'Soltar'
+        'Copiar', 'Diferenciar', 'Ameaçar', 'Celebrar', 'Denuciar', 'Raspar', 'Segurar', 'Soltar',
+        'Fechar', 'Abrir', 'Elevar'
     ]
 
     static resultado() {

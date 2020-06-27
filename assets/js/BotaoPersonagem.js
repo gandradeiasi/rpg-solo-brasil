@@ -85,7 +85,7 @@ class BotaoPersonagem {
         /aa$/, /oo$/, /uu$/, /ee$/, /ii$/, /^aa/, /^ee/, /^ii/, /^uu/, /^oo/, /cg/, /^que/, /^heto/,
         /^reto/, /deita$/, /deito$/, /.f.+f./, /sce/, /sci/, /mega/, /loc[auo]/, /-.$/, /pa[nm]$/,
         /sr/, /[ck]ju/, /pedof/, /ant[ao]/, /ta[ul]co/, /let[ei]/, /tara/, /n.+n.+n/, /mam[aioue]/,
-        /^kv/, /orma/, /bv$/, /[bcdfghjklmnpqrstwyvzx]{4}/, /[bcdfghjklmnpqrstwyvzx]{2}-[bcdfghjklmnpqrstwyvzx]{2}/,
+        /^kv/, /orma/, /bv$/, /[bcdfghjklmnpqrstwyvzx]{3}/, /[bcdfghjklmnpqrstwyvzx]{2}-[bcdfghjklmnpqrstwyvzx]{2}/,
         /^[bcdfghjklmnpqrstwyvzx][skqwtpsdfgjkzxcvbnm]/, /pica/, /^-/, /-$/, /^[bcdfghjklmnpqrstwyvzx]-/,
         /pa[ul]$/, /[sc]entona/, /[bcdfghjklmnpqrstwyvzx]x/, /x[bcdfghjklmnpqrstwyvzx]/, /a{3}/,
         /e{3}/,/o{3}/,/i{3}/,/u{3}/,/y{2}/, /[bcdfghjklmnpqrstwyvzx]h$/, /[bcdfhjkmnpqstwyvzx][nm]/, /cq/, /qc/,
