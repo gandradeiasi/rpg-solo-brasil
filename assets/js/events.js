@@ -39,8 +39,10 @@ btn_baralho.addEventListener('click', () => {
 });
 
 modal.addEventListener('click', e => {
-    if (!e.path.some(x => x.classList ? x.classList.contains('body') : false))
+    if (!e.path.some(x => x.classList ? x.classList.contains('body') : false)) {
+        Notes.render();
         Modal.fecha();
+    }
 });
 
 btn_tabelas_geradores.addEventListener('click', () => {
