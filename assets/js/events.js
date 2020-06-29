@@ -38,12 +38,19 @@ btn_baralho.addEventListener('click', () => {
     enviaComando();
 });
 
+modal.addEventListener('click', e => {
+    if (!e.path.some(x => x.classList ? x.classList.contains('body') : false)) {
+        Notes.render();
+        Modal.fecha();
+    }
+});
+
 btn_tabelas_geradores.addEventListener('click', () => {
     Modal.abre('Tabelas e Geradores', `
         <br>
-        <button id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
-        <button id="btn-missao" onclick="Modal.fecha()">Missão</button>
-        <button id="btn-personagem" onclick="Modal.fecha()">Personagem</button>
+        <button class="btn-tabela-gerador" id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
+        <button class="btn-tabela-gerador" id="btn-missao" onclick="Modal.fecha()">Missão</button>
+        <button class="btn-tabela-gerador" id="btn-personagem" onclick="Modal.fecha()">Personagem</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
@@ -70,9 +77,12 @@ fecha_modal.addEventListener('click', () => Modal.fecha());
 window.addEventListener('keyup', e => {
     if (e.key == "Shift") shift = false;
 
-    //envia o que estiver na caida de comando
-    else if (!shift && e.key == "Enter" && document.activeElement === txtarea_command)
-        enviaComando();
+    else if (e.key == "Enter") {
+        if (!shift && document.activeElement === txtarea_command)
+            enviaComando();
+        else if (document.activeElement.id ? document.activeElement.id == "add-input-title" : false )
+            document.querySelector('#btn-adicionar').click();
+    }
 
     else if (txtarea_log.innerHTML == "<br>") txtarea_log.innerHTML = '';
 

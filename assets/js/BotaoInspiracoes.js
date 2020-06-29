@@ -19,7 +19,8 @@ class BotaoInspiracoes {
         'Conserto', 'Música', 'Arte', 'Bom', 'Mal', 'Bem', 'Claridade', 'Escuridão', 'Doença',
         'Saúde', 'Aspereza', 'Lisura', 'Horror', 'Terror', 'Confiança', 'Vigia', 'Guarda',
         'Armazém', 'Carga', 'Energia', 'Ideia', 'Névoa', 'Facilidade', 'Dificuldade', 'Pó',
-        'Cinzas', 'Onda', 'Fartura', 'Gordura', 'Leveza', 'Peso', 'Grandeza', 'Certeza', 'Deus'
+        'Cinzas', 'Onda', 'Fartura', 'Gordura', 'Leveza', 'Peso', 'Grandeza', 'Certeza', 'Deus',
+        'Chamado'
     ]
 
     static verbos = [
@@ -35,7 +36,9 @@ class BotaoInspiracoes {
         'Despedir', 'Renunciar', 'Construir', 'Destruir', 'Cortar', 'Prover', 'Confirmar',
         'Confiar', 'Estudar', 'Analisar', 'Revidar', 'Defender', 'Torturar', 'Sarar', 'Cuidar',
         'Montar', 'Tramar', 'Focar', 'Juntar', 'Separar', 'Trazer', 'Levar', 'Cultivar', 'Vestir',
-        'Copiar', 'Diferenciar', 'Ameaçar', 'Celebrar', 'Denuciar', 'Raspar', 'Segurar', 'Soltar'
+        'Copiar', 'Diferenciar', 'Ameaçar', 'Celebrar', 'Denuciar', 'Raspar', 'Segurar', 'Soltar',
+        'Fechar', 'Abrir', 'Elevar', 'Clamar', 'Chamar', 'Conduzir', 'Vibrar', 'Emanar', 'Atraiar',
+        'Afastar', 'Esfriar', 'Esquentar', 'Crair', 'Destruir'
     ]
 
     static resultado() {
