@@ -20,3 +20,4 @@ só que ao invés de jogar direto no log,
 
  deixar geradores e tabelas e uma aba separada
  
+ susbtituir cargos militares por apenas (militar)
