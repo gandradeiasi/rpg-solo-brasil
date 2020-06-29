@@ -73,6 +73,8 @@ header .container .hamburger { display: none; z-index: 9; }
 
 .botoes-exclui { text-align: right; }
 
+.btn-tabela-gerador { margin-bottom: 3px; }
+
 .menu li >*,
 .menu li >*:visited {  color: white; text-decoration: none; transition: 300ms; display: block; font-weight: bold; }
 .menu li >*:hover { transform: scale(1.1); }

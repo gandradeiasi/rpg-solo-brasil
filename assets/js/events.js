@@ -46,9 +46,9 @@ modal.addEventListener('click', e => {
 btn_tabelas_geradores.addEventListener('click', () => {
     Modal.abre('Tabelas e Geradores', `
         <br>
-        <button id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
-        <button id="btn-missao" onclick="Modal.fecha()">Missão</button>
-        <button id="btn-personagem" onclick="Modal.fecha()">Personagem</button>
+        <button class="btn-tabela-gerador" id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
+        <button class="btn-tabela-gerador" id="btn-missao" onclick="Modal.fecha()">Missão</button>
+        <button class="btn-tabela-gerador" id="btn-personagem" onclick="Modal.fecha()">Personagem</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
