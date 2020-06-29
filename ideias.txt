@@ -25,3 +25,5 @@ susbtituir cargos militares por apenas (militar)
 Fecha modal no esc
 
 Trocar ordem das notas
+
+arrasta e solta das notas
