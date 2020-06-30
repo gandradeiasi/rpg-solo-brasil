@@ -1,4 +1,9 @@
 class Notes {
+    static fecha() {
+        Modal.fecha();
+        Notes.render();
+    }
+
     static add(title) {
         const id = lista_notas.length == 0 ? 0 : parseInt(lista_notas[lista_notas.length - 1].id) + 1;
         lista_notas.push({ id, title: title ? title : 'Nota', content: '' });

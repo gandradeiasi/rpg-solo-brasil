@@ -39,10 +39,8 @@ btn_baralho.addEventListener('click', () => {
 });
 
 modal.addEventListener('click', e => {
-    if (!e.path.some(x => x.classList ? x.classList.contains('body') : false)) {
-        Notes.render();
-        Modal.fecha();
-    }
+    if (!e.path.some(x => x.classList ? x.classList.contains('body') : false))
+        Notes.fecha();
 });
 
 btn_tabelas_geradores.addEventListener('click', () => {
@@ -50,7 +48,9 @@ btn_tabelas_geradores.addEventListener('click', () => {
         <br>
         <button class="btn-tabela-gerador" id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
         <button class="btn-tabela-gerador" id="btn-missao" onclick="Modal.fecha()">Missão</button>
-        <button class="btn-tabela-gerador" id="btn-personagem" onclick="Modal.fecha()">Personagem</button>
+        <button class="btn-tabela-gerador" id="btn-profissao" onclick="Modal.fecha()">Profissão</button>
+        <button class="btn-tabela-gerador" id="btn-nome" onclick="Modal.fecha()">Nome</button>
+        <button class="btn-tabela-gerador" id="btn-adjetivo" onclick="Modal.fecha()">Adjetivo para NPC</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
@@ -65,10 +65,19 @@ btn_tabelas_geradores.addEventListener('click', () => {
         command_controller.adicionaAoLog(`<strong>Missão: ${resultado.verbo} / ${resultado.substantivo}<strong>`);
     });
     
-    modal.querySelector('#btn-personagem').addEventListener('click', () => {
+    modal.querySelector('#btn-nome').addEventListener('click', () => {
         adicionaPergunta();
-        const resultado = BotaoPersonagem.resultado();
-        command_controller.adicionaAoLog(`<strong>Personagem: ${BotaoPersonagem.formataGeneroAleatorio()}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Nome: ${Nome.nome()}<strong>`);
+    });
+
+    modal.querySelector('#btn-profissao').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Profissão: ${randomFromArray(Tabelas.profissoes)}<strong>`);
+    });
+
+    modal.querySelector('#btn-adjetivo').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Adjetivo: ${randomFromArray(Tabelas.adjetivos)}<strong>`);
     });
 });
 
@@ -110,6 +119,8 @@ window.addEventListener('keydown', e => {
                 break;
         }
     }
+    
+    else if (e.key == "Escape") { Notes.fecha(); }
 });
 
 abre_anotacoes.addEventListener('click', () => { anotacoes.classList.add('active') });
