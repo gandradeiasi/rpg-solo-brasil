@@ -10,58 +10,85 @@ btn_tabelas_geradores.addEventListener('click', () => {
         <button class="btn-tabela-gerador" id="btn-raca" onclick="Modal.fecha()">Raça</button>
         <button class="btn-tabela-gerador" id="btn-criatura" onclick="Modal.fecha()">Criatura</button>
         <button class="btn-tabela-gerador" id="btn-clima" onclick="Modal.fecha()">Clima</button>
+        <button class="btn-tabela-gerador" id="btn-encontro" onclick="Modal.fecha()">Encontro</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
         adicionaPergunta();
         const resultado = BotaoInspiracoes.resultado();
-        command_controller.adicionaAoLog(`<strong>Inspiração: ${resultado.substantivo} / ${resultado.verbo}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Inspiração: </strong>${resultado.substantivo} / ${resultado.verbo}`);
     });
     
     modal.querySelector('#btn-missao').addEventListener('click', () => {
         adicionaPergunta();
         const resultado = BotaoMissoes.resultado();
-        command_controller.adicionaAoLog(`<strong>Missão: ${resultado.verbo} / ${resultado.substantivo}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Missão: </strong>${resultado.verbo} / ${resultado.substantivo}`);
     });
     
     modal.querySelector('#btn-nome').addEventListener('click', () => {
         adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Nome: ${Nome.nome()}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Nome: </strong>${Nome.nome()}`);
     });
 
     modal.querySelector('#btn-profissao').addEventListener('click', () => {
         adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Profissão: ${randomFromArray(Tabelas.profissoes)}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Profissão: </strong>${randomFromArray(Tabelas.profissoes)}`);
     });
 
     modal.querySelector('#btn-adjetivo').addEventListener('click', () => {
         adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Adjetivo: ${randomFromArray(Tabelas.adjetivos)}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Adjetivo: </strong>${randomFromArray(Tabelas.adjetivos)}`);
     });
 
     modal.querySelector('#btn-lugar').addEventListener('click', () => {
         adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Lugar: ${randomFromArray(Tabelas.lugares)}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Lugar: </strong>${randomFromArray(Tabelas.lugares)}`);
     });
 
     modal.querySelector('#btn-raca').addEventListener('click', () => {
         adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Raça: ${randomFromArray(Tabelas.racas)}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Raça: </strong>${randomFromArray(Tabelas.racas)}`);
     });
 
     modal.querySelector('#btn-criatura').addEventListener('click', () => {
         adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Criatura: ${randomFromArray(Tabelas.criaturas)}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Criatura: </strong>${randomFromArray(Tabelas.criaturas)}`);
     });
 
     modal.querySelector('#btn-clima').addEventListener('click', () => {
         adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Clima: ${randomFromArray(Tabelas.climas)}<strong>`);
+        command_controller.adicionaAoLog(`<strong>Clima: </strong>${randomFromArray(Tabelas.climas)}`);
+    });
+
+    modal.querySelector('#btn-encontro').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Encontro: </strong>${randomFromArray(Tabelas.encontros)}`);
     });
 });
 
 
 class Tabelas {
+    static encontros = [
+        'um grupo de bandidos tenta de roubar',
+        'alguém tenta de matar',
+        'alguém te entrega uma mensagem',
+        'você encontra alguém morto',
+        'você encontra alguém ferido',
+        'você encontra um mercador ambulante',
+        'você encontra um viajante',
+        'você encontra alguém sendo atacado',
+        'você encontra alguém sendo roubado',
+        'você encontra uma caravana indo para um festival',
+        'uma criatura aparece',
+        'algo sobrenatural acontece',
+        'você encontra um objetro de pouco valor',
+        'você encontra um objetro valioso',
+        'você encontra uma pista de algo que aconteceu aqui',
+        'você encontra uma pista de alguém que passou por aqui',
+        'você encontra um acampamento',
+        'alguém pede ajuda'
+    ];
+
     static climas = [
         'céu ensolarado sem nuvens, o vento está forte e quente',
         'céu ensolarado sem nuvens, o vento está forte e fesco',
@@ -112,7 +139,9 @@ class Tabelas {
         'colecionador(a)', 'aprendiz', 'faxineiro(a)', 'pedinte', 'exorcista', 'explorador(a)', 'aventureiro(a)', 'investidor(a)',
         'agricultor(a)', 'negociante', 'cientista', 'alveneiro(a)', 'escultor(a)', 'ocultista', 'instrutor(a)', 'herói/heroína', 'rei/rainha',
         'prefeito(a)', 'chapeleiro(a)', 'lojista', 'especialista', 'poeta', 'escriba', 'agiota', 'político(a)', 'factótum', 'faz-tudo',
-        'recepcionista', 'secretário(a)', 'ministro(a)', 'psicólogo(a)'
+        'recepcionista', 'secretário(a)', 'ministro(a)', 'psicólogo(a)', 'arqueiro(a)', 'druída', 'xamã', 'feiticeiro(a)', 'paladino(a)',
+        'piloto(a)', 'químico(a)', 'teólogo(a)', 'legista', 'detetive', 'economista', 'capitão/capitã', 'gerente', 'biólogo(a)',
+        'necromante'
     ]
 
     static racas = [
@@ -127,14 +156,16 @@ class Tabelas {
         'gnoll', 'minotauro', 'centauro', 'espírito', 'zumbi', 'elemental', 'golem', 'tarrasque', 'harpia',
         'mantícora', 'hidra', 'kraken', 'goblin', 'orc', 'ciclope', 'titã', 'dinossauro', 'lich', 'gosma',
         'armadura-viva', 'kobold', 'árvore-viva', 'inseto-gigante', 'fungóide', 'quimera', 'planta-carnívora',
-        'gárgula', 'fogo-fátuo', 'grifo', 'vorme', 'mímico', 'beholder', 'múmia', 'naga', 'imp', 'murloc'
+        'gárgula', 'fogo-fátuo', 'grifo', 'vorme', 'mímico', 'beholder', 'múmia', 'naga', 'imp', 'murloc', 'cobra-venenosa',
+        'hobgoblin', 'lagarto de pedra'
     ]
 
     static lugares = [
-        'montanha', 'cidade', 'tumba', 'lago', 'ilha', 'continente', 'praia', 'casa', 'ruína', 'castelo',
+        'montanha', 'cidade', 'cripta', 'lago', 'ilha', 'continente', 'praia', 'casa', 'ruína', 'castelo',
         'torre', 'capela', 'templo', 'deserto', 'vale', 'planície', 'estrada', 'rio', 'cachoeira', 'esconderijo',
         'mercado', 'floresta', 'selva', 'mar', 'colina', 'clareira', 'fazenda', 'plantação', 'biblioteca', 'masmorra',
-        'taverna', 'caverna', 'cemitério', 'prisão', 'arena', 'estábulo', 'ravina'
+        'taverna', 'caverna', 'cemitério', 'prisão', 'arena', 'estábulo', 'ravina', 'ponte', 'túnel', 'esgoto', 'loja',
+        'oficina', 'escola', 'praça', 'penhasco'
     ]
 
     static adjetivos = [

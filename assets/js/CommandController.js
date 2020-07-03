@@ -8,7 +8,7 @@ class CommandController {
                     const parametro = this.reconheceParametro(input);
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
                         const info = DiceRoller.infoFromParam(parametro);
-                        this.adicionaAoLog(`<strong>${DiceRoller.formataSoma(DiceRoller.roll(info.dice_amount, info.dice_max, info.modifier))}</strong>`);
+                        this.adicionaAoLog(`${DiceRoller.formataSoma(DiceRoller.roll(info.dice_amount, info.dice_max, info.modifier))}`);
                         return true;
                     }
                     return false;
@@ -21,7 +21,7 @@ class CommandController {
                     const parametro = this.reconheceParametro(input);
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
                         const info = DiceRoller.infoFromParam(parametro);
-                        this.adicionaAoLog(`<strong>${DiceRoller.formataVantagem(DiceRoller.roll(info.dice_amount, info.dice_max))}</strong>`);
+                        this.adicionaAoLog(`${DiceRoller.formataVantagem(DiceRoller.roll(info.dice_amount, info.dice_max))}`);
                         return true;
                     }
                     return false;
@@ -34,7 +34,7 @@ class CommandController {
                     const parametro = this.reconheceParametro(input);
                     if (this.validaParametro(parametro, DiceRoller.regex)) {
                         const info = DiceRoller.infoFromParam(parametro);
-                        this.adicionaAoLog(`<strong>${DiceRoller.formataDesvantagem(DiceRoller.roll(info.dice_amount, info.dice_max))}</strong>`);
+                        this.adicionaAoLog(`${DiceRoller.formataDesvantagem(DiceRoller.roll(info.dice_amount, info.dice_max))}`);
                         return true;
                     }
                     return false;
@@ -57,8 +57,8 @@ class CommandController {
                 "description": 'Saca uma carta do baralha. Caso o baralho esteja vazio, embaralha as cartas.',
                 "function": () => {
                     const resultado = Baralho.sacar();
-                    if (resultado.mensagem) command_controller.adicionaAoLog(`<strong>${resultado.mensagem}<strong>`);
-                    else command_controller.adicionaAoLog(`<strong>Carta: ${resultado.valor} ${resultado.simbolo}<strong>`);
+                    if (resultado.mensagem) command_controller.adicionaAoLog(`<strong>${resultado.mensagem}</strong>`);
+                    else command_controller.adicionaAoLog(`<strong>Carta:</strong> ${resultado.valor} ${resultado.simbolo}`);
                     return true;
                 }
             },

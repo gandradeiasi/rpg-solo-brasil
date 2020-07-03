@@ -21,15 +21,15 @@ class DiceRoller {
         const modifier_sign = result.modifier ? (result.modifier < 0 ? '-' : '+') : null;
         result.modifier = modifier_sign == "-" ? result.modifier * -1 : result.modifier;
         const modifier_format = `${result.modifier ? ` ${modifier_sign} ${result.modifier}` : ''}`
-        return `Rolando ${result.results.length}d${result.dice_max}${modifier_format} : ${DiceRoller.formataDices(result, " + ")}${modifier_format}${DiceRoller.mostraSufixo(result) ? ` || Soma = ${result.total}` : ''}`
+        return `<strong>Rolando ${result.results.length}d${result.dice_max}${modifier_format}:</strong> ${DiceRoller.formataDices(result, " + ")}${modifier_format}${DiceRoller.mostraSufixo(result) ? ` || Soma = ${result.total}` : ''}`
     }
 
     static formataVantagem(result) {
-        return `Rolando ${result.results.length}d${result.dice_max} : ${DiceRoller.formataDices(result, ", ")}${DiceRoller.mostraSufixo(result) ? ` || Maior = ${result.results.reduce((x,y) => y > x ? y : x, 0)}` : ''}`
+        return `<strong>Rolando ${result.results.length}d${result.dice_max}:</strong> ${DiceRoller.formataDices(result, ", ")}${DiceRoller.mostraSufixo(result) ? ` || Maior = ${result.results.reduce((x,y) => y > x ? y : x, 0)}` : ''}`
     }
 
     static formataDesvantagem(result) {
-        return `Rolando ${result.results.length}d${result.dice_max} : ${DiceRoller.formataDices(result, ", ")}${DiceRoller.mostraSufixo(result) ? ` || Menor = ${result.results.reduce((x,y) => y < x ? y : x, result.results[0])}` : ''}`
+        return `<strong>Rolando ${result.results.length}d${result.dice_max}:</strong> ${DiceRoller.formataDices(result, ", ")}${DiceRoller.mostraSufixo(result) ? ` || Menor = ${result.results.reduce((x,y) => y < x ? y : x, result.results[0])}` : ''}`
     }
 
     static mostraSufixo(result) {
