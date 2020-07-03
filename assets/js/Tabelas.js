@@ -13,6 +13,7 @@ btn_tabelas_geradores.addEventListener('click', () => {
         <button class="btn-tabela-gerador" id="btn-encontro" onclick="Modal.fecha()">Encontro</button>
         <button class="btn-tabela-gerador" id="btn-horario" onclick="Modal.fecha()">Horário</button>
         <button class="btn-tabela-gerador" id="btn-chefao" onclick="Modal.fecha()">Chefao</button>
+        <button class="btn-tabela-gerador" id="btn-objeto" onclick="Modal.fecha()">Objeto</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
@@ -76,10 +77,24 @@ btn_tabelas_geradores.addEventListener('click', () => {
         adicionaPergunta();
         command_controller.adicionaAoLog(`<strong>Chefão: </strong>${randomFromArray(Tabelas.chefoes)}`);
     });
+
+    modal.querySelector('#btn-objeto').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Objeto: </strong>${randomFromArray(Tabelas.objetos)}`);
+    });
 });
 
-
 class Tabelas {
+    static objetos = [
+        'arma cortante pequena', 'arma cortante média', 'arma cortante grande',
+        'arma desparadora de projéteis', 'arma perfurante', 'arma de arremesso', 'arma de pancada',
+        'carta', 'frasco vazio', 'frasco cheio', 'vaso', 'relíquia', 'tomo', 'pergaminho', 'varinha',
+        'medicamento', 'bandagem', 'saco com moedas', 'jóia falsa', 'jóia preciosa', 'pequena escultura',
+        'quadro', 'manto', 'cajado', 'bastão', 'mapa', 'minério', 'corda', 'instrumento', 'bumerangue',
+        'chicote', 'luneta', 'vara de pesca', 'mochila', 'roda', 'item mágico', 'veste', 'calçado',
+        'capacete', 'peitoral', 'ombreira', 'chapéu', 'bracelete', 'colar', 'anel'
+    ]
+
     static encontros = [
         'um grupo de bandidos tenta de roubar',
         'alguém tenta de matar',
