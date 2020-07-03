@@ -18,7 +18,8 @@ class BotaoSimNao {
         "uma nova ameaça surge",
         "um novo perigo surge",
         "uma aemaça ou perigo antigo volta a aparecer",
-        "um NPC (conhecido ou não) entra em cena",
+        "um NPC já conhecido entra em cena",
+        "um NPC desconhecido entra em cena",
         "um NPC muda drasticamente de alguma forma",
         "um NPC se torna o foco da cena",
         "um objeto se torna o foco da cena",
@@ -40,7 +41,7 @@ class BotaoSimNao {
         "um NPC faz uma ação impressionante ou importante",
         "alguma coisa revela não ser o que parecia",
         "alguém é ferido",
-        "um novo obtáculo aparece"
+        "um novo obstáculo aparece"
     ];
 
     static evento() { return randomFromArray(BotaoSimNao.eventos) }

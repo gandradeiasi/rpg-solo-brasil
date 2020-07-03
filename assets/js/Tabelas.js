@@ -9,6 +9,7 @@ btn_tabelas_geradores.addEventListener('click', () => {
         <button class="btn-tabela-gerador" id="btn-lugar" onclick="Modal.fecha()">Lugar</button>
         <button class="btn-tabela-gerador" id="btn-raca" onclick="Modal.fecha()">Raça</button>
         <button class="btn-tabela-gerador" id="btn-criatura" onclick="Modal.fecha()">Criatura</button>
+        <button class="btn-tabela-gerador" id="btn-clima" onclick="Modal.fecha()">Clima</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
@@ -52,10 +53,48 @@ btn_tabelas_geradores.addEventListener('click', () => {
         adicionaPergunta();
         command_controller.adicionaAoLog(`<strong>Criatura: ${randomFromArray(Tabelas.criaturas)}<strong>`);
     });
+
+    modal.querySelector('#btn-clima').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Clima: ${randomFromArray(Tabelas.climas)}<strong>`);
+    });
 });
 
 
 class Tabelas {
+    static climas = [
+        'céu ensolarado sem nuvens, o vento está forte e quente',
+        'céu ensolarado sem nuvens, o vento está forte e fesco',
+        'céu ensolarado sem nuvens, o vento está leve e quente',
+        'céu ensolarado sem nuvens, o vento está leve e fesco',
+        'céu ensolarado sem nuvens, o vento está forte',
+        'céu ensolarado sem nuvens, o vento está leve',
+        'céu ensolarado sem nuvens e sem vento',
+        'céu nublado com o sol a mostra',
+        'céu nublado com o sol a mostra, o vento está forte e quente',
+        'céu nublado com o sol a mostra, o vento está forte e frio',
+        'céu nublado com o sol a mostra, o vento está leve e quente',
+        'céu nublado com o sol a mostra, o vento está leve e frio',
+        'céu nublado com o sol a mostra, o vento está forte',
+        'céu nublado com o sol a mostra, o vento está leve',
+        'céu nublado com as nuvens escondendo o sol e sem vento',
+        'céu nublado com as nuvens escondendo o sol, o vento está forte e quente',
+        'céu nublado com as nuvens escondendo o sol, o vento está forte e frio',
+        'céu nublado com as nuvens escondendo o sol, o vento está leve e quente',
+        'céu nublado com as nuvens escondendo o sol, o vento está leve e frio',
+        'céu nublado com as nuvens escondendo o sol, o vento está forte',
+        'céu nublado com as nuvens escondendo o sol, o vento está leve',
+        'nuvens negras cobrem o céu',
+        'flocos de nevem começam a cair',
+        'nevasca',
+        'um furacão se aproxima',
+        'chuva de granizo',
+        'cuva fraca',
+        'tempestade',
+        'chuvisco',
+        'neblina'
+    ];
+
     static profissoes = [
         'estudante', 'cultista', 'monge/monja', 'sacerdote/sacerdotisa', 'militar',
         'mercador(a)', 'cozinheiro(a)', 'artesão/artesã', 'arquiteto(a)', 'pintor(a)', 'engenheiro(a)', 'caçador(a)',
