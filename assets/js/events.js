@@ -43,44 +43,6 @@ modal.addEventListener('click', e => {
         Notes.fecha();
 });
 
-btn_tabelas_geradores.addEventListener('click', () => {
-    Modal.abre('Tabelas e Geradores', `
-        <br>
-        <button class="btn-tabela-gerador" id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
-        <button class="btn-tabela-gerador" id="btn-missao" onclick="Modal.fecha()">Missão</button>
-        <button class="btn-tabela-gerador" id="btn-profissao" onclick="Modal.fecha()">Profissão</button>
-        <button class="btn-tabela-gerador" id="btn-nome" onclick="Modal.fecha()">Nome</button>
-        <button class="btn-tabela-gerador" id="btn-adjetivo" onclick="Modal.fecha()">Adjetivo para NPC</button>
-    `);
-
-    modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
-        adicionaPergunta();
-        const resultado = BotaoInspiracoes.resultado();
-        command_controller.adicionaAoLog(`<strong>Inspiração: ${resultado.substantivo} / ${resultado.verbo}<strong>`);
-    });
-    
-    modal.querySelector('#btn-missao').addEventListener('click', () => {
-        adicionaPergunta();
-        const resultado = BotaoMissoes.resultado();
-        command_controller.adicionaAoLog(`<strong>Missão: ${resultado.verbo} / ${resultado.substantivo}<strong>`);
-    });
-    
-    modal.querySelector('#btn-nome').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Nome: ${Nome.nome()}<strong>`);
-    });
-
-    modal.querySelector('#btn-profissao').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Profissão: ${randomFromArray(Tabelas.profissoes)}<strong>`);
-    });
-
-    modal.querySelector('#btn-adjetivo').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Adjetivo: ${randomFromArray(Tabelas.adjetivos)}<strong>`);
-    });
-});
-
 fecha_modal.addEventListener('click', () => Modal.fecha());
 
 window.addEventListener('keyup', e => {
