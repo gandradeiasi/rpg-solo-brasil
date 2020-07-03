@@ -39,11 +39,17 @@ btn_baralho.addEventListener('click', () => {
 });
 
 modal.addEventListener('click', e => {
-    if (!e.path.some(x => x.classList ? x.classList.contains('body') : false))
+    if (!drag && !e.path.some(x => x.classList ? x.classList.contains('body') : false))
         Notes.fecha();
 });
 
 fecha_modal.addEventListener('click', () => Modal.fecha());
+
+window.addEventListener('mousedown', () => click = true);
+
+window.addEventListener('mousemove', () => drag = click);
+
+window.addEventListener('mouseup', () => click = false);
 
 window.addEventListener('keyup', e => {
     if (e.key == "Shift") shift = false;

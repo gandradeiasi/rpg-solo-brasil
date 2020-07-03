@@ -28,3 +28,5 @@ let lista_notas = [];
 let pilha_comandos = [''];
 let pilha_comandos_index = null;
 let shift = false;
+let click = false;
+let drag = false;
