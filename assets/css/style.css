@@ -47,9 +47,14 @@ header .container .hamburger { display: none; z-index: 9; }
 .main .container .col-2 .notes .notes-box .add .botao.active { display: block; }
 .main .container .col-2 .notes .notes-box .add .input { display: none;}
 .main .container .col-2 .notes .notes-box .add .input.active { display: block; }
-.main .container .col-2 .notes .notes-box .note { display: flex; align-items: center; justify-content: space-between; }
+.main .container .col-2 .notes .notes-box .note { display: flex; align-items: center; }
+.main .container .col-2 .notes .notes-box .note .arrows { display: none; font-size: 13px; color: gray; margin-right: .5rem; }
+.main .container .col-2 .notes .notes-box .note .arrows > * { margin: -3px 0; }
+.main .container .col-2 .notes .notes-box .note .arrows > *:hover { color: black; }
+.main .container .col-2 .notes .notes-box .note > *:first-child { margin-right: auto; }
 .main .container .col-2 .notes .notes-box .note:last-child { margin-bottom: 0px; }
 .main .container .col-2 .notes .notes-box .note:hover button { display: block; }
+.main .container .col-2 .notes .notes-box .note:hover .arrows { display: block; }
 .main .container .col-2 .notes .notes-box .note button { display: none; }
 .main .container .col-2 .notes .fechar { display: none; }
 .main .container .col-2 .buttons { text-align: center; padding: .5rem; }

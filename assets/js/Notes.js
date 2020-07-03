@@ -20,6 +20,42 @@ class Notes {
         Notes.render();
     }
 
+    static moveUp(id) {
+        let troca_id = null;
+
+        lista_notas.forEach(x => {
+            if (x.id < id && (troca_id ? x.id > troca_id : true)) troca_id = x.id;
+        });
+
+        if (troca_id) {
+            lista_notas.filter(x => x.id == troca_id)[0].id = id;
+            lista_notas.filter(x => x.id == id)[1].id = troca_id;
+        }
+
+        lista_notas.sort((x,y) => x.id - y.id)
+
+        Save.save();
+        Notes.render();
+    }
+
+    static moveDown(id) {
+        let troca_id = null;
+
+        lista_notas.forEach(x => {
+            if (x.id > id && (troca_id ? x.id < troca_id : true)) troca_id = x.id;
+        });
+
+        if (troca_id) {
+            lista_notas.filter(x => x.id == id)[0].id = troca_id;
+            lista_notas.filter(x => x.id == troca_id)[1].id = id;
+        }
+
+        lista_notas.sort((x,y) => x.id - y.id)
+
+        Save.save();
+        Notes.render();
+    }
+
     static render() {
         notes_box.innerHTML = `
             <div class="add">
@@ -37,6 +73,10 @@ class Notes {
             notes_box.innerHTML += `
                 <div data-id="${x.id}" class="note hover">
                     <div>${x.title}</div>
+                    <div class="arrows">
+                        <div class="arrow-up" data-id="${x.id}">▲</div>
+                        <div class="arrow-down" data-id="${x.id}">▼</div>
+                    </div>
                     <button data-id="${x.id}" class="excluir-nota">Excluir</button>
                 </div>
             `
@@ -44,7 +84,7 @@ class Notes {
 
         notes_box.querySelectorAll('.note').forEach(x => {
             x.addEventListener('click', e => {
-                if (!e.path.some(y => y.classList ? y.classList.contains('excluir-nota') : false)) {
+                if (!e.path.some(y => y.classList ? y.classList.contains('excluir-nota') || y.classList.contains('arrow-up') || y.classList.contains('arrow-down') : false)) {
                     const note = lista_notas.filter(y => y.id == x.dataset.id)[0];
 
                     Modal.abre(note.title,
@@ -70,7 +110,6 @@ class Notes {
         });
 
         notes_box.querySelectorAll('.excluir-nota').forEach(x => {
-
             x.addEventListener('click', e => {
                 Modal.abre('Excluir nota', `
                 <p>Deseja mesmo excluir essa nota?<p>
@@ -79,6 +118,14 @@ class Notes {
                     <button onclick="Notes.remove(${e.path.filter(x => x.dataset ? x.dataset.id : false)[0].dataset.id});Modal.fecha();">Excluir</button>
                 </div>`);
             });
+        })
+
+        notes_box.querySelectorAll('.arrow-down').forEach(x => {
+            x.addEventListener('click', e => { Notes.moveDown(x.dataset.id); });
+        })
+
+        notes_box.querySelectorAll('.arrow-up').forEach(x => {
+            x.addEventListener('click', e => { Notes.moveUp(parseInt(x.dataset.id)); });
         })
 
         window.addEventListener('keyup', () => {
