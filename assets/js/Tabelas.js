@@ -11,6 +11,8 @@ btn_tabelas_geradores.addEventListener('click', () => {
         <button class="btn-tabela-gerador" id="btn-criatura" onclick="Modal.fecha()">Criatura</button>
         <button class="btn-tabela-gerador" id="btn-clima" onclick="Modal.fecha()">Clima</button>
         <button class="btn-tabela-gerador" id="btn-encontro" onclick="Modal.fecha()">Encontro</button>
+        <button class="btn-tabela-gerador" id="btn-horario" onclick="Modal.fecha()">Horário</button>
+        <button class="btn-tabela-gerador" id="btn-chefao" onclick="Modal.fecha()">Chefao</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
@@ -18,13 +20,13 @@ btn_tabelas_geradores.addEventListener('click', () => {
         const resultado = BotaoInspiracoes.resultado();
         command_controller.adicionaAoLog(`<strong>Inspiração: </strong>${resultado.substantivo} / ${resultado.verbo}`);
     });
-    
+
     modal.querySelector('#btn-missao').addEventListener('click', () => {
         adicionaPergunta();
         const resultado = BotaoMissoes.resultado();
         command_controller.adicionaAoLog(`<strong>Missão: </strong>${resultado.verbo} / ${resultado.substantivo}`);
     });
-    
+
     modal.querySelector('#btn-nome').addEventListener('click', () => {
         adicionaPergunta();
         command_controller.adicionaAoLog(`<strong>Nome: </strong>${Nome.nome()}`);
@@ -64,6 +66,16 @@ btn_tabelas_geradores.addEventListener('click', () => {
         adicionaPergunta();
         command_controller.adicionaAoLog(`<strong>Encontro: </strong>${randomFromArray(Tabelas.encontros)}`);
     });
+
+    modal.querySelector('#btn-horario').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Horário: </strong>${randomFromArray(Tabelas.horarios)}`);
+    });
+
+    modal.querySelector('#btn-chefao').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Chefão: </strong>${randomFromArray(Tabelas.chefoes)}`);
+    });
 });
 
 
@@ -81,19 +93,21 @@ class Tabelas {
         'você encontra uma caravana indo para um festival',
         'uma criatura aparece',
         'algo sobrenatural acontece',
-        'você encontra um objetro de pouco valor',
-        'você encontra um objetro valioso',
+        'você encontra um objeto de pouco valor',
+        'você encontra um objeto valioso',
         'você encontra uma pista de algo que aconteceu aqui',
         'você encontra uma pista de alguém que passou por aqui',
         'você encontra um acampamento',
-        'alguém pede ajuda'
+        'alguém pede ajuda',
+        'você ouve um grito',
+        'você encontra um chefão'
     ];
 
     static climas = [
         'céu ensolarado sem nuvens, o vento está forte e quente',
-        'céu ensolarado sem nuvens, o vento está forte e fesco',
+        'céu ensolarado sem nuvens, o vento está forte e fresco',
         'céu ensolarado sem nuvens, o vento está leve e quente',
-        'céu ensolarado sem nuvens, o vento está leve e fesco',
+        'céu ensolarado sem nuvens, o vento está leve e fresco',
         'céu ensolarado sem nuvens, o vento está forte',
         'céu ensolarado sem nuvens, o vento está leve',
         'céu ensolarado sem nuvens e sem vento',
@@ -132,7 +146,7 @@ class Tabelas {
         'bibliotecário(a)', 'adestrador(a)', 'babá', 'lenhador(a)', 'condutor(a)', 'administrador(a)', 'feirante', 'asceta',
         'ferreiro(a)', 'alfaiate', 'costureiro(a)', 'tecelão/tecelã', 'criminoso(a)', 'ladrão/ladra', 'espião/espiã', 'comunicador(a)',
         'vendedor(a)', 'fabricante(a)', 'fornecedor(a)', 'investigador(a)', 'mercenário(a)', 'pesquisador(a)', 'fiscal', 'atleta',
-        'herbolario(a)', 'lutador(a)', 'gladiador(a)', 'mestre(a)', 'ator/atriz', 'musicista', 'joalheiro(a)', 'minerador(a)',
+        'herbolário(a)', 'lutador(a)', 'gladiador(a)', 'mestre(a)', 'ator/atriz', 'musicista', 'joalheiro(a)', 'minerador(a)',
         'atirador(a)', 'mordomo', 'barbeiro(a)', 'guia', 'padeiro(a)', 'animador(a)', 'vidraceiro(a)', 'torturador(a)',
         'escoteiro(a)', 'jardineiro(a)', 'cervejeiro(a)', 'barqueiro(a)', 'charlatão/charlatã', 'estalajadeiro(a)', 'tanoeiro(a)',
         'consultor(a)', 'oleiro(a)', 'chaveiro(a)', 'açougueiro(a)', 'cafetão/cafetã', 'prostituto(a)', 'fisiculturista',
@@ -151,13 +165,19 @@ class Tabelas {
         'doppelganger', 'gigante', 'meio-gosma', 'semideus', 'meio-planta'
     ]
 
+    static chefoes = [
+        'dragão', 'kraken', 'verme gigante', 'beholder', 'titã', 'hidra', 'grifo', 'necromante',
+        'lich', 'golem', 'minotauro', 'demônio', 'forjado bélico gigante', 'gosma gigante',
+        'quimera', 'serpente gigante', 'vampiro ancião'
+    ]
+
     static criaturas = [
-        'troll', 'ogro', 'esqueleto', 'dragão', 'demônio', 'aranha-gigante', 'rato-gigante', 'lobo',
-        'gnoll', 'minotauro', 'centauro', 'espírito', 'zumbi', 'elemental', 'golem', 'tarrasque', 'harpia',
-        'mantícora', 'hidra', 'kraken', 'goblin', 'orc', 'ciclope', 'titã', 'dinossauro', 'lich', 'gosma',
-        'armadura-viva', 'kobold', 'árvore-viva', 'inseto-gigante', 'fungóide', 'quimera', 'planta-carnívora',
-        'gárgula', 'fogo-fátuo', 'grifo', 'vorme', 'mímico', 'beholder', 'múmia', 'naga', 'imp', 'murloc', 'cobra-venenosa',
-        'hobgoblin', 'lagarto de pedra'
+        'troll', 'ogro', 'esqueleto', 'dragonete', 'aranha gigante', 'rato gigante', 'lobo',
+        'gnoll', 'centauro', 'espírito', 'zumbi', 'elemental', 'harpia',
+        'mantícora', 'goblin', 'orc', 'ciclope', 'dinossauro', 'gosma',
+        'armadura-viva', 'kobold', 'árvore-viva', 'inseto-gigante', 'fungóide', 'planta-carnívora',
+        'gárgula', 'fogo-fátuo', 'mímico', 'múmia', 'naga', 'imp', 'murloc', 'cobra-venenosa',
+        'hobgoblin', 'lagarto de pedra', 'aberração'
     ]
 
     static lugares = [
@@ -166,6 +186,14 @@ class Tabelas {
         'mercado', 'floresta', 'selva', 'mar', 'colina', 'clareira', 'fazenda', 'plantação', 'biblioteca', 'masmorra',
         'taverna', 'caverna', 'cemitério', 'prisão', 'arena', 'estábulo', 'ravina', 'ponte', 'túnel', 'esgoto', 'loja',
         'oficina', 'escola', 'praça', 'penhasco'
+    ]
+
+    static horarios = [
+        '00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30',
+        '05:0', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30',
+        '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+        '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30',
+        '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30'
     ]
 
     static adjetivos = [
@@ -181,7 +209,7 @@ class Tabelas {
         'ingênuo(a)', 'manipulável', 'manipulador(a)', 'insensível', 'sensato(a)', 'esforçado(a)',
         'bruto(a)', 'perturbado(a)', 'sagaz', 'mesquinho(a)', 'astuto(a)', 'trabalhador(a)', 'caolho(a)',
         'técnico(a)', 'cético(a)', 'legal', 'chato(a)', 'irritante', 'proativo(a)', 'lento(a)',
-        'insano(a)', 'acelerado(a)', 'alcólatra', 'drogado(a)', 'viciado(a)', 'gênio(a)', 'rigoroso(a)',
+        'insano(a)', 'acelerado(a)', 'alcoólatra', 'drogado(a)', 'viciado(a)', 'gênio(a)', 'rigoroso(a)',
         'risonho(a)', 'disciplinado(a)', 'caótico(a)', 'leal', 'baderneiro(a)', 'apostador(a)', 'vulgar',
         'supersticioso(a)', 'atencioso(a)', 'avoado(a)', 'fútil', 'nojento(a)', 'traumatizado(a)', 'orgulhoso(a)',
         'humilde', 'prolixo(a)', 'prolífico(a)', 'fofo(a)', 'grosso(a)', 'gentil', 'mimado(a)', 'arteiro(a)',
@@ -196,10 +224,10 @@ class Tabelas {
         'sujo(a)', 'arrumado(a)', 'alegre', 'impressionado(a)', 'animado(a)', 'concentrado(a)',
         'dolorido(a)', 'indeciso(a)', 'esperançoso(a)', 'impaciente', 'exausto(a)', 'alucinado(a)',
         'apaixonado(a)', 'calmo(a)', 'tranquilo(a)', 'bravo(a)', 'feliz', 'infeliz', 'satisfeito(a)', 'insatisfeito(a)',
-        'ejoado(a)', 'apressado(a)', 'nervoso(a)', 'ansioso(a)', 'envergonhado(a)', 'arrependido(a)', 'desanimado(a)',
+        'enjoado(a)', 'apressado(a)', 'nervoso(a)', 'ansioso(a)', 'envergonhado(a)', 'arrependido(a)', 'desanimado(a)',
         'interessado(a)', 'desinteressado(a)', 'ocupado(a)', 'incrédulo(a)', 'desolado(a)', 'iludido(a)', 'desiludido(a)',
-        'famoso(a)', 'folgado(a)', 'maltrapilho(a)', 'teimoso(a)', 'supérfulo(a)', 'ignorante', 'maneiro(a)', 'deselegante',
-        'inconveniente', 'útil', 'inútil', 'profissional', 'iniciante', 'lendário(a)', 'caipira', 'urbano(a)', 'nativo(a)', 
-        'vegetarian(a)', 'vegano(a)', 'ativista', 'aposentado(a)', 'falido(a)'
+        'famoso(a)', 'folgado(a)', 'maltrapilho(a)', 'teimoso(a)', 'supérfluo(a)', 'ignorante', 'maneiro(a)', 'deselegante',
+        'inconveniente', 'útil', 'inútil', 'profissional', 'iniciante', 'lendário(a)', 'caipira', 'urbano(a)', 'nativo(a)',
+        'vegetariano(a)', 'vegano(a)', 'ativista', 'aposentado(a)', 'falido(a)'
     ]
 }

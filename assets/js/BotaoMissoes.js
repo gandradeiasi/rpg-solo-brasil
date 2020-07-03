@@ -29,7 +29,7 @@ class BotaoMissoes {
         'apreender', 'vingar', 'fugir', 'interromper', 'prender', 'soltar', 'adentrar',
         'sair', 'modificar', 'completar', 'juntar', 'unir', 'separar', 'atacar', 'defender',
         'reconhecer', 'buscar', 'fechar', 'abrir', 'impedir', 'causar', 'viajar', 'proteger',
-        'escapar', 'acompanhar', 'garantir', 'certificar', 'atrair', 'recrutar', 'seguir'
+        'escapar', 'acompanhar', 'garantir', 'certificar', 'atrair', 'recrutar', 'seguir', 'trocar'
     ]
 
     static resultado() {
