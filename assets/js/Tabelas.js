@@ -12,8 +12,10 @@ btn_tabelas_geradores.addEventListener('click', () => {
         <button class="btn-tabela-gerador" id="btn-clima" onclick="Modal.fecha()">Clima</button>
         <button class="btn-tabela-gerador" id="btn-encontro" onclick="Modal.fecha()">Encontro</button>
         <button class="btn-tabela-gerador" id="btn-horario" onclick="Modal.fecha()">Horário</button>
-        <button class="btn-tabela-gerador" id="btn-chefao" onclick="Modal.fecha()">Chefao</button>
+        <button class="btn-tabela-gerador" id="btn-chefao" onclick="Modal.fecha()">Chefão</button>
         <button class="btn-tabela-gerador" id="btn-objeto" onclick="Modal.fecha()">Objeto</button>
+        <button class="btn-tabela-gerador" id="btn-deus" onclick="Modal.fecha()">Deus</button>
+        <button class="btn-tabela-gerador" id="btn-temas" onclick="Modal.fecha()">Tema Narrativo</button>
     `);
 
     modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
@@ -82,17 +84,68 @@ btn_tabelas_geradores.addEventListener('click', () => {
         adicionaPergunta();
         command_controller.adicionaAoLog(`<strong>Objeto: </strong>${randomFromArray(Tabelas.objetos)}`);
     });
+
+    modal.querySelector('#btn-deus').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Deus: </strong> deus${Math.random() > .5 ? '' : 'a'} ${randomFromArray(Tabelas.deuses)}`);
+    });
+
+    modal.querySelector('#btn-temas').addEventListener('click', () => {
+        adicionaPergunta();
+        command_controller.adicionaAoLog(`<strong>Tema Narrativo: </strong>${randomFromArray(Tabelas.temas)}`);
+    });
 });
 
 class Tabelas {
+    static temas = [
+        'alta fantasia', 'baixa fantasia', 'fantasia sombria', 'horror cósmico', 'faroeste clássico',
+        'steampunk', 'dieselpunk', 'space opera', 'cyberpunk', 'idade média', 'japão feudal', 'idade do bronze',
+        'terror sobrenatural', 'alienigenas', 'política', 'investigação policial', 'colegial adolescente',
+        'vikings', 'pós-apocalipse', 'shounen', 'mitologia grega na atualidade', 'brasil colonial fantasioso',
+        'battle royale', 'afrofuturismo', 'exploração', 'espionagem', 'agentes secretos', 'super-heróis',
+        'investigação sobrenatural', 'mutantes', 'tokusatsu', 'suspense', 'kaiju', 'noir', 'faroeste fantástico',
+        'esportes', 'corrida', 'mafia', 'gangues', 'tribos', 'europa vitoriana fantasiosa', 'sobrevivência',
+        'pérsia fantasiosa', 'antropomorfos', 'aventuras submarinas', 'reality show', 'pré-história', 'mad max',
+        'urbex', 'vampiro', 'lobisomem', 'caça de monstros', 'guerra', 'viagem no tempo', 'mecha', 'negócios',
+        'transporte', 'pilotagem', 'piratas', 'dobra elementar', 'dinossauros', 'wuxia', 'harry potter',
+        'apostas', 'atompunk', 'egito fantasioso', 'tower defence', 'religião', 'magia', 'terra de gigantes',
+        'xamanismo', 'biopunk', 'raypunk', 'solarpunk', 'pokemón-like', 'shadow of the colossus', 'grécia antiga',
+        'pugilismo', 'torneio de luta', 'wrestling', 'artefatos mágicos', 'stealth', 'construção e gerenciamento de cidades',
+        'anjos e demônios', 'exorcismo', 'país das maravilhas', 'civilização de robôs', 'maia/asteca/inca fantasioso',
+        'mitologia eslava', 'população da terra migrou para uma nave', 'caçadores de recompensa', 'colonização de planetas',
+        'star wars', 'realidade virtual', 'realidades alternativas'
+    ]
+
+    static deuses = [
+        'do amor', 'do ódio', 'da morte', 'da discórdia', 'do caos', 'da esperança', 'da caridade', 'do mar',
+        'do vento', 'da viajem', 'da riqueza', 'dos pobres', 'da dúvida', 'do conhecimento', 'do vinho',
+        'da fartura', 'da criação', 'da sorte', 'da luz', 'da escuridão', 'do subterrâneo', 'da paz',
+        'da guerra', 'do trabalho', 'da exploração', 'da beleza', 'da feiura', 'do engano', 'da fertilidade',
+        'das soluções', 'da vida', 'do verão', 'do inverno', 'da primavera', 'do outono', 'das sombras',
+        'da verdade', 'da mentira', 'da natureza', 'dos portais', 'do submundo', 'do sol', 'da lua',
+        'das estrelas', 'das criaturas', 'da mensagem', 'da arte', 'da justiça', 'da injustiça',
+        'da chuva', 'da cura', 'da doença', 'do fogo', 'do frio', 'do ciclo', 'da longevidade',
+        'dos demônios', 'do equilíbrio', 'da saúde', 'da dualidade', 'do tempo', 'da trapaça',
+        'da traição', 'da tradição', 'da força'
+    ]
+
     static objetos = [
         'arma cortante pequena', 'arma cortante média', 'arma cortante grande',
-        'arma desparadora de projéteis', 'arma perfurante', 'arma de arremesso', 'arma de pancada',
+        'arma disparadora de projéteis', 'arma perfurante', 'arma de arremesso', 'porrete',
         'carta', 'frasco vazio', 'frasco cheio', 'vaso', 'relíquia', 'tomo', 'pergaminho', 'varinha',
-        'medicamento', 'bandagem', 'saco com moedas', 'jóia falsa', 'jóia preciosa', 'pequena escultura',
+        'medicamento', 'bandagem', 'saco com moedas', 'joia falsa', 'joia preciosa', 'pequena escultura',
         'quadro', 'manto', 'cajado', 'bastão', 'mapa', 'minério', 'corda', 'instrumento', 'bumerangue',
         'chicote', 'luneta', 'vara de pesca', 'mochila', 'roda', 'item mágico', 'veste', 'calçado',
-        'capacete', 'peitoral', 'ombreira', 'chapéu', 'bracelete', 'colar', 'anel'
+        'capacete', 'peitoral', 'ombreira', 'chapéu', 'bracelete', 'colar', 'anel', 'pacote', 'ferramenta',
+        'brinquedo', 'pedra', 'pedra preciosa', 'machado', 'martelo', 'nunchaku', 'arma estrela da manhã',
+        'maça', 'cartaz de procurado', 'ovo de criatura', 'cinto', 'chave', 'utensílio de cozinha',
+        'utensílio de ladroagem', 'garra', 'coroa', 'charuto', 'cachimbo', 'símbolo religioso', 'baixo-relevo',
+        'unha apodrecida', 'cristal', 'cristal com almas dentro', 'gnomo de jardim', 'espelho', 'pele de animal',
+        'crânio', 'dispositivo tecnológico muito avançado para essa época', 'diário', 'totem de madeira',
+        'busto', 'dados', 'jogo de tabuleiro', 'item amaldiçoado', 'tapete voador', 'chifre', 'presa',
+        'ingrediente alquímico', 'algemas', 'ferradura', 'luva', 'pata de coelho', 'planta exótica',
+        'bigorna', 'candelabro', 'círio ritualístico', 'cinzas', 'pederneira', 'tocha', 'toco de madeira',
+        'fóssil', 'caixinha de música', 'rede', 'amuleto', 'poção', 'escudo', 'munição', 'projétil'
     ]
 
     static encontros = [
@@ -115,7 +168,8 @@ class Tabelas {
         'você encontra um acampamento',
         'alguém pede ajuda',
         'você ouve um grito',
-        'você encontra um chefão'
+        'você encontra um chefão',
+        'militares passam por você'
     ];
 
     static climas = [
@@ -168,31 +222,33 @@ class Tabelas {
         'colecionador(a)', 'aprendiz', 'faxineiro(a)', 'pedinte', 'exorcista', 'explorador(a)', 'aventureiro(a)', 'investidor(a)',
         'agricultor(a)', 'negociante', 'cientista', 'alveneiro(a)', 'escultor(a)', 'ocultista', 'instrutor(a)', 'herói/heroína', 'rei/rainha',
         'prefeito(a)', 'chapeleiro(a)', 'lojista', 'especialista', 'poeta', 'escriba', 'agiota', 'político(a)', 'factótum', 'faz-tudo',
-        'recepcionista', 'secretário(a)', 'ministro(a)', 'psicólogo(a)', 'arqueiro(a)', 'druída', 'xamã', 'feiticeiro(a)', 'paladino(a)',
+        'recepcionista', 'secretário(a)', 'ministro(a)', 'psicólogo(a)', 'arqueiro(a)', 'druida', 'xamã', 'feiticeiro(a)', 'paladino(a)',
         'piloto(a)', 'químico(a)', 'teólogo(a)', 'legista', 'detetive', 'economista', 'capitão/capitã', 'gerente', 'biólogo(a)',
-        'necromante'
+        'necromante', 'bandido(a)', 'samurai', 'ninja', 'jogador(a)', 'pregador(a)'
     ]
 
     static racas = [
         'humano', 'metadílio', 'meio-animal', 'elfo', 'meio-elfo', 'orc', 'meio-orc', 'fada', 'gnomo', 'duende',
-        'alienígena', 'meio-demônio', 'meio-criatura', 'goblin', 'hobgoblin', 'draconato', 'anão', 'tritão', 'meio-tritão',
+        'alienígena', 'meio-demônio', 'meio-bestial', 'goblin', 'hobgoblin', 'draconato', 'anão', 'tritão', 'meio-tritão',
         'meio-anjo', 'meio-jinn', 'doppelganger', 'vampiro', 'licantropo', 'forjado bélico', 'droide', 'ghoul',
-        'doppelganger', 'gigante', 'meio-gosma', 'semideus', 'meio-planta'
+        'doppelganger', 'meio-gigante', 'meio-gosma', 'semideus', 'meio-planta'
     ]
 
     static chefoes = [
         'dragão', 'kraken', 'verme gigante', 'beholder', 'titã', 'hidra', 'grifo', 'necromante',
         'lich', 'golem', 'minotauro', 'demônio', 'forjado bélico gigante', 'gosma gigante',
-        'quimera', 'serpente gigante', 'vampiro ancião'
+        'quimera', 'serpente gigante', 'vampiro ancião', 'bruxa', 'javali mutante', 'arranca-línguas',
+        'mapinguari', 'pai do mato', 'besouro titã'
     ]
 
     static criaturas = [
         'troll', 'ogro', 'esqueleto', 'dragonete', 'aranha gigante', 'rato gigante', 'lobo',
         'gnoll', 'centauro', 'espírito', 'zumbi', 'elemental', 'harpia',
-        'mantícora', 'goblin', 'orc', 'ciclope', 'dinossauro', 'gosma',
-        'armadura-viva', 'kobold', 'árvore-viva', 'inseto-gigante', 'fungóide', 'planta-carnívora',
+        'manticora', 'goblin', 'orc', 'ciclope', 'dinossauro', 'gosma',
+        'armadura-viva', 'kobold', 'árvore-viva', 'inseto-gigante', 'fungoide', 'planta-carnívora',
         'gárgula', 'fogo-fátuo', 'mímico', 'múmia', 'naga', 'imp', 'murloc', 'cobra-venenosa',
-        'hobgoblin', 'lagarto de pedra', 'aberração'
+        'hobgoblin', 'lagarto de pedra', 'aberração', 'capelobo', 'corpo-seco', 'labatut', 'barghest',
+        'basilisco menor', 'cocatriz', 'urso-coruja', 'bugbear', 'phooka', 'gigante'
     ]
 
     static lugares = [
@@ -200,7 +256,8 @@ class Tabelas {
         'torre', 'capela', 'templo', 'deserto', 'vale', 'planície', 'estrada', 'rio', 'cachoeira', 'esconderijo',
         'mercado', 'floresta', 'selva', 'mar', 'colina', 'clareira', 'fazenda', 'plantação', 'biblioteca', 'masmorra',
         'taverna', 'caverna', 'cemitério', 'prisão', 'arena', 'estábulo', 'ravina', 'ponte', 'túnel', 'esgoto', 'loja',
-        'oficina', 'escola', 'praça', 'penhasco'
+        'oficina', 'escola', 'praça', 'penhasco', 'laboratório', 'jardim', 'palácio', 'vila',
+        'beco', 'vilarejo', 'aldeia', 'fortaleza', 'muralha', 'pântano', 'vulcão', 'geleira', 'museu'
     ]
 
     static horarios = [
