@@ -11,6 +11,8 @@ button { cursor: pointer; }
 *:focus { outline: none; }
 
 /*Sections*/
+.seo { display: none; }
+
 header { background-color: black; color: white; padding: 1rem 0; }
 header .container { display: flex; align-items: center; justify-content: space-between; }
 header .container .logo { font-size: 20px; font-weight: bold; position: relative; display: flex; align-items: center; }

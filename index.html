@@ -4,25 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jogue RPG sozinho sem precisar de um mestre, utilizando geradores e tabelas aleatórias para aprimorar sua imersão!">
-    <meta name="keywords" content="rpg, solo, sozinho, solo, notas, rolar, dados, dado, alone, meste, online, mobile, tabela, aleatório, gerador, geradores">
-    <meta name="content" content="Jogue qualquer sistema de RPG sozinho, sem a necessidade de um mestre. Faça perguntas que você faria ao meste e utilize os geradores e as tabelas para responder as suas perguntas. Use a criatividade para adaptar as respostas obtidas à cena que está sendo narrada.">
-    <title>RPG Solo - Jogue do seu jeito</title>
-    <link rel="canonical" href="https://www.rpgsolo.com.br">
+    <meta name="description"
+        content="Ferramenta para jogar RPG sozinho com geradores, tabelas, dados e notas com salvamento automático, utilizando qualquer sistema de RPG.">
+    <meta name="keywords"
+        content="rpg, solo, jogue, seu jeito, rolagem, sozinho, solo, notas, rolar, dados, dado, mestre, online, mobile, tabela, aleatório, gerador, geradores">
+    <title>RPG Solo | Jogue sem precisar de um mestre</title>
+    <link rel="canonical" href="https://www.rpgsolo.com.br/">
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="assets/css/min/style.min.css">
 </head>
 
 <body>
+    <div class="seo">
+        <h1>RPG Solo: Jogue sozinho e do seu jeito</h1>
+        <p>
+            Jogue qualquer sistema de RPG sozinho sem precisar de um mestre. Faça perguntas sobre a narrativa e deixe
+            que as respostas obtidas pelas tabelas e geradores somadas à sua imaginação tornarem o seu jogo
+            surpreendente.
+        </p>
+        <h2>Gerador de nomes</h2>
+        <p>
+            O nosso gerador aleatório de nomes é ideal para nomear personagens e lugares. Você vai se supreender com os
+            nomes que podem sair desse gerador.
+        </p>
+        <h2>Tabelas aleatórias</h2>
+        <p>
+            Tabelas aleatórias e geradores vão te ajudar a dar um tempero a mais na sua narrativa. Utilize os geradores
+            e tabelas quando você travar na sua narrativa e precisar de um ideia de como seguir adiante, ou até mesmo
+            para responder perguntas binárias ou amplas.
+        </p>
+        <h2>Rolagem de dados</h2>
+        <p>
+            Rolagens de dados através de comando de texto ou botão. É possível fazer rolagens de soma, com ou sem
+            modificador, ou rolagens com vantagem ou desvantagem.
+        </p>
+        <h2>Comandos de texto</h2>
+        <p>
+            Você pode utilizar comandos de texto para agilizar algums processos, como rolagens de dados, sacar cartas do
+            baralho e até mesmo fazer contas matemáticas
+        </p>
+        <h2>Anotações com salvamento automático</h2>
+        <p>
+            O site permite criar notas para que você use como ficha de personagens e para organizar sua aventura. Todas
+            as notas ficam salvas no navegador, permitindo que você continue da onde parou.
+        </p>
+        <h2>Log com histórico</h2>
+        <p>
+            Tudo o que você faz no site fica gravado em um log, que pode ser copiado para a área de tranferência para
+            caso você queria salvar em outro lugar ou compartilhar com os amigos. O log pode ser editado manualmente e
+            pode ser apagado com o comando /clear.
+        </p>
+        <h2>Responsividade</h2>
+        <p>Jogue RPG em qualquer lugar acessando o site através do seu dispositivo móvel.</p>
+    </div>
     <header>
         <nav class="container">
             <div class="logo">
-                <h1 class="text">RPG SOLO</h1>
+                <p class="text">RPG SOLO</p>
                 <img src="assets/img/logo-animation.png" alt="ícones de escudo, espada e cajado">
             </div>
-            <h2 class="anotacoes" id="abre-anotacoes">Notas</h2>
+            <p class="anotacoes" id="abre-anotacoes">Notas</p>
             <ul class="menu">
-                <li data-menu-slot="1"></li>
+                <li><a title="Grupo 'Solo RPG' no Facebook" target="_blank" href="https://www.facebook.com/groups/187588152056870">Grupo do Facebook</a></li>
             </ul>
             <div id="hamburger" class="hamburger">
                 <div class="traco"></div>
@@ -33,7 +76,7 @@
     </header>
     <nav id="mobile-menu" class="mobile-menu">
         <ul class="menu">
-            <li data-menu-slot="1"></li>
+            <li><a title="Grupo 'Solo RPG' no Facebook" target="_blank" href="https://www.facebook.com/groups/187588152056870">Grupo do Facebook</a></li>
         </ul>
     </nav>
     <div class="main">
@@ -63,13 +106,13 @@
                         <input id="dice-max" min="1" value="6" type="number">
                         +
                         <input id="dice-modifier" type="number" value="0">
-                        <button id="btn-rolar" itemscope>Rolar</button>
+                        <button id="btn-rolar">Rolar</button>
                     </div>
-                    <button id="btn-vantagem" itemscope>Vantagem</button>
-                    <button id="btn-desvantagem" itemscope>Desvantagem</button>
-                    <button id="btn-sim-nao" itemscope>Sim/Não</button>
-                    <button id="btn-baralho" itemscope>Sacar Carta</button>
-                    <button id="btn-tabelas-geradores"itemscope>Tabelas e Geradores</button>
+                    <button id="btn-vantagem">Vantagem</button>
+                    <button id="btn-desvantagem">Desvantagem</button>
+                    <button id="btn-sim-nao">Sim/Não</button>
+                    <button id="btn-baralho">Sacar Carta</button>
+                    <button id="btn-tabelas-geradores">Tabelas e Geradores</button>
                 </div>
             </div>
         </div>
@@ -102,7 +145,6 @@
     <script defer src="assets/js/min/Modal.min.js"></script>
     <script defer src="assets/js/min/Notes.min.js"></script>
     <script defer src="assets/js/min/events.min.js"></script>
-    <script async src="assets/js/min/menu.min.js"></script>
 </body>
 
 </html>
