@@ -24,6 +24,7 @@ const notes_box = document.querySelector('#notes-box');
 const modal = document.querySelector('#modal');
 const fecha_modal = document.querySelector('#fecha-modal');
 
+let lista_tabelas = [];
 let lista_notas = [];
 let pilha_comandos = [''];
 let pilha_comandos_index = null;

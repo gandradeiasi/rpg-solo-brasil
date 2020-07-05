@@ -38,6 +38,10 @@ btn_baralho.addEventListener('click', () => {
     enviaComando();
 });
 
+btn_tabelas_geradores.addEventListener('click', () => {
+    Tabelas.renderizaLista();
+});
+
 modal.addEventListener('click', e => {
     if (!drag && !e.path.some(x => x.classList ? x.classList.contains('body') : false))
         Notes.fecha();
@@ -52,13 +56,30 @@ window.addEventListener('mousemove', () => drag = click);
 window.addEventListener('mouseup', () => click = false);
 
 window.addEventListener('keyup', e => {
-    if (e.key == "Shift") shift = false;
+    const element = document.activeElement;
 
+    if (e.key == "Shift") shift = false;
     else if (e.key == "Enter") {
         if (!shift && document.activeElement === txtarea_command)
             enviaComando();
-        else if (document.activeElement.id ? document.activeElement.id == "add-input-title" : false )
+        else if (document.activeElement.id ? document.activeElement.id == "add-input-title" : false)
             document.querySelector('#btn-adicionar').click();
+    }
+    else if (element.classList.contains('current-table')) {
+        lista_tabelas.filter(x => x.id == element.dataset.id)[0].content = element.value;
+        Save.save();
+    }
+    else if (element.classList.contains('table-title')) {
+        lista_tabelas.filter(x => x.id == element.dataset.id)[0].name = element.innerHTML ? element.innerText : 'Tebela Customizada';
+        Save.save();
+    }
+    else if (element.classList.contains('current-note')) {
+        lista_notas.filter(x => x.id == element.dataset.id)[0].content = element.value;
+        Save.save();
+    }
+    else if (element.classList.contains('note-title')) {
+        lista_notas.filter(x => x.id == element.dataset.id)[0].title = element.innerText ? element.innerText : 'Nota';
+        Save.save();
     }
 
     else if (txtarea_log.innerHTML == "<br>") txtarea_log.innerHTML = '';
@@ -87,7 +108,7 @@ window.addEventListener('keydown', e => {
                 break;
         }
     }
-    
+
     else if (e.key == "Escape") { Notes.fecha(); }
 });
 

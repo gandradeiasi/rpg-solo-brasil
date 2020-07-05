@@ -5,5 +5,8 @@ class Modal {
         modal.classList.add('active');
     }
 
-    static fecha() { modal.classList.remove('active'); }
+    static fecha() { 
+        modal.classList.remove('active');
+        modal.querySelector('.title').className = "title";
+     }
 }

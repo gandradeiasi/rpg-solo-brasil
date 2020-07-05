@@ -1,102 +1,175 @@
-btn_tabelas_geradores.addEventListener('click', () => {
-    Modal.abre('Tabelas e Geradores', `
-        <br>
-        <button class="btn-tabela-gerador" id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
-        <button class="btn-tabela-gerador" id="btn-missao" onclick="Modal.fecha()">Missão</button>
-        <button class="btn-tabela-gerador" id="btn-profissao" onclick="Modal.fecha()">Profissão</button>
-        <button class="btn-tabela-gerador" id="btn-nome" onclick="Modal.fecha()">Nome</button>
-        <button class="btn-tabela-gerador" id="btn-adjetivo" onclick="Modal.fecha()">Adjetivo para NPC</button>
-        <button class="btn-tabela-gerador" id="btn-lugar" onclick="Modal.fecha()">Lugar</button>
-        <button class="btn-tabela-gerador" id="btn-raca" onclick="Modal.fecha()">Raça</button>
-        <button class="btn-tabela-gerador" id="btn-criatura" onclick="Modal.fecha()">Criatura</button>
-        <button class="btn-tabela-gerador" id="btn-clima" onclick="Modal.fecha()">Clima</button>
-        <button class="btn-tabela-gerador" id="btn-encontro" onclick="Modal.fecha()">Encontro</button>
-        <button class="btn-tabela-gerador" id="btn-horario" onclick="Modal.fecha()">Horário</button>
-        <button class="btn-tabela-gerador" id="btn-chefao" onclick="Modal.fecha()">Chefão</button>
-        <button class="btn-tabela-gerador" id="btn-objeto" onclick="Modal.fecha()">Objeto</button>
-        <button class="btn-tabela-gerador" id="btn-deus" onclick="Modal.fecha()">Deus</button>
-        <button class="btn-tabela-gerador" id="btn-temas" onclick="Modal.fecha()">Tema Narrativo</button>
-    `);
-
-    modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
-        adicionaPergunta();
-        const resultado = BotaoInspiracoes.resultado();
-        command_controller.adicionaAoLog(`<strong>Inspiração: </strong>${resultado.substantivo} / ${resultado.verbo}`);
-    });
-
-    modal.querySelector('#btn-missao').addEventListener('click', () => {
-        adicionaPergunta();
-        const resultado = BotaoMissoes.resultado();
-        command_controller.adicionaAoLog(`<strong>Missão: </strong>${resultado.verbo} / ${resultado.substantivo}`);
-    });
-
-    modal.querySelector('#btn-nome').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Nome: </strong>${Nome.nome()}`);
-    });
-
-    modal.querySelector('#btn-profissao').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Profissão: </strong>${randomFromArray(Tabelas.profissoes)}`);
-    });
-
-    modal.querySelector('#btn-adjetivo').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Adjetivo: </strong>${randomFromArray(Tabelas.adjetivos)}`);
-    });
-
-    modal.querySelector('#btn-lugar').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Lugar: </strong>${randomFromArray(Tabelas.lugares)}`);
-    });
-
-    modal.querySelector('#btn-raca').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Raça: </strong>${randomFromArray(Tabelas.racas)}`);
-    });
-
-    modal.querySelector('#btn-criatura').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Criatura: </strong>${randomFromArray(Tabelas.criaturas)}`);
-    });
-
-    modal.querySelector('#btn-clima').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Clima: </strong>${randomFromArray(Tabelas.climas)}`);
-    });
-
-    modal.querySelector('#btn-encontro').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Encontro: </strong>${randomFromArray(Tabelas.encontros)}`);
-    });
-
-    modal.querySelector('#btn-horario').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Horário: </strong>${randomFromArray(Tabelas.horarios)}`);
-    });
-
-    modal.querySelector('#btn-chefao').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Chefão: </strong>${randomFromArray(Tabelas.chefoes)}`);
-    });
-
-    modal.querySelector('#btn-objeto').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Objeto: </strong>${randomFromArray(Tabelas.objetos)}`);
-    });
-
-    modal.querySelector('#btn-deus').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Deus: </strong> deus${Math.random() > .5 ? '' : 'a'} ${randomFromArray(Tabelas.deuses)}`);
-    });
-
-    modal.querySelector('#btn-temas').addEventListener('click', () => {
-        adicionaPergunta();
-        command_controller.adicionaAoLog(`<strong>Tema Narrativo: </strong>${randomFromArray(Tabelas.temas)}`);
-    });
-});
-
 class Tabelas {
+    static botoesTabelasCustom() {
+        let string_final = "";
+        lista_tabelas.forEach(x => {
+            string_final += `
+                <button data-id=${x.id} class="btn-tabela-gerador btn-tabela-custom">
+                    ${x.name}
+                    <span data-id=${x.id} class="edit-table" title="Editar">
+                        &#128393;
+                    </span>
+                    <span data-id=${x.id} class="exclude-table" title="Remover">
+                        &#x1f5d1;
+                    </span>
+                </button>
+            `
+        });
+        return string_final;
+    }
+
+    static remove(id) {
+        for (let i = 0; i < lista_tabelas.length; i++)
+            if (lista_tabelas[i].id == id)
+                lista_tabelas.splice(i, 1);
+        Save.save();
+        Tabelas.renderizaLista();
+    }
+
+    static edita(id) {
+        const table = lista_tabelas.filter(x => x.id == id)[0];
+
+        Modal.abre(table.name, `
+                <textarea class="current-table" data-id=${id} placeholder="Cada linha ecrita aqui será uma linha da tabela"></textarea>
+            `);
+
+        const txtarea = modal.querySelector('.current-table');
+        const title = modal.querySelector('.title');
+        title.setAttribute('contenteditable', 'true');
+        title.setAttribute('data-id', id);
+        title.classList.add('table-title');
+        txtarea.value = table.content;
+        txtarea.focus();
+    }
+
+    static renderizaLista() {
+        Modal.abre('Tabelas e Geradores', `
+            <br>
+            <button class="btn-tabela-gerador" id="btn-inspiracoes" onclick="Modal.fecha()">Inspiração</button>
+            <button class="btn-tabela-gerador" id="btn-missao" onclick="Modal.fecha()">Missão</button>
+            <button class="btn-tabela-gerador" id="btn-profissao" onclick="Modal.fecha()">Profissão</button>
+            <button class="btn-tabela-gerador" id="btn-nome" onclick="Modal.fecha()">Nome</button>
+            <button class="btn-tabela-gerador" id="btn-adjetivo" onclick="Modal.fecha()">Adjetivo para NPC</button>
+            <button class="btn-tabela-gerador" id="btn-lugar" onclick="Modal.fecha()">Lugar</button>
+            <button class="btn-tabela-gerador" id="btn-raca" onclick="Modal.fecha()">Raça</button>
+            <button class="btn-tabela-gerador" id="btn-criatura" onclick="Modal.fecha()">Criatura</button>
+            <button class="btn-tabela-gerador" id="btn-clima" onclick="Modal.fecha()">Clima</button>
+            <button class="btn-tabela-gerador" id="btn-encontro" onclick="Modal.fecha()">Encontro</button>
+            <button class="btn-tabela-gerador" id="btn-horario" onclick="Modal.fecha()">Horário</button>
+            <button class="btn-tabela-gerador" id="btn-chefao" onclick="Modal.fecha()">Chefão</button>
+            <button class="btn-tabela-gerador" id="btn-objeto" onclick="Modal.fecha()">Objeto</button>
+            <button class="btn-tabela-gerador" id="btn-deus" onclick="Modal.fecha()">Deus</button>
+            <button class="btn-tabela-gerador" id="btn-temas" onclick="Modal.fecha()">Tema Narrativo</button>
+            ${Tabelas.botoesTabelasCustom()}
+            <button class="btn-tabela-gerador" id="btn-add-tabela">Adicionar Tabela</button>
+        `);
+
+        modal.querySelectorAll('.edit-table').forEach(x => {
+            x.addEventListener('click', () => Tabelas.edita(x.dataset.id));
+        });
+
+        modal.querySelectorAll('.exclude-table').forEach(x => {
+            x.addEventListener('click', () => Tabelas.remove(x.dataset.id));
+        });
+
+        modal.querySelectorAll('.btn-tabela-custom').forEach(x => {
+            x.addEventListener('click', e => {
+                if (!e.path.some(x => x.classList ? x.classList.contains('edit-table') || x.classList.contains('exclude-table') : false)) {
+                    const tabela = lista_tabelas.filter(y => x.dataset.id == y.id)[0];
+                    adicionaPergunta();
+                    command_controller.adicionaAoLog(`<strong>${tabela.name}: </strong>${randomFromArray(tabela.content.split('\n').filter(x => x))}`)
+                    Modal.fecha();
+                }   
+            })
+        });
+
+        modal.querySelector('#btn-add-tabela').addEventListener('click', e => {
+            lista_tabelas.push({
+                name: "Tabela Customizada",
+                id: lista_tabelas.length > 0 ? lista_tabelas[lista_tabelas.length - 1].id + 1 : 0,
+                content: ''
+            });
+
+            Tabelas.edita(lista_tabelas[lista_tabelas.length - 1].id);
+        });
+
+        modal.querySelector('#btn-inspiracoes').addEventListener('click', () => {
+            adicionaPergunta();
+            const resultado = BotaoInspiracoes.resultado();
+            command_controller.adicionaAoLog(`<strong>Inspiração: </strong>${resultado.substantivo} / ${resultado.verbo}`);
+        });
+
+        modal.querySelector('#btn-missao').addEventListener('click', () => {
+            adicionaPergunta();
+            const resultado = BotaoMissoes.resultado();
+            command_controller.adicionaAoLog(`<strong>Missão: </strong>${resultado.verbo} / ${resultado.substantivo}`);
+        });
+
+        modal.querySelector('#btn-nome').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Nome: </strong>${Nome.nome()}`);
+        });
+
+        modal.querySelector('#btn-profissao').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Profissão: </strong>${randomFromArray(Tabelas.profissoes)}`);
+        });
+
+        modal.querySelector('#btn-adjetivo').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Adjetivo: </strong>${randomFromArray(Tabelas.adjetivos)}`);
+        });
+
+        modal.querySelector('#btn-lugar').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Lugar: </strong>${randomFromArray(Tabelas.lugares)}`);
+        });
+
+        modal.querySelector('#btn-raca').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Raça: </strong>${randomFromArray(Tabelas.racas)}`);
+        });
+
+        modal.querySelector('#btn-criatura').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Criatura: </strong>${randomFromArray(Tabelas.criaturas)}`);
+        });
+
+        modal.querySelector('#btn-clima').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Clima: </strong>${randomFromArray(Tabelas.climas)}`);
+        });
+
+        modal.querySelector('#btn-encontro').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Encontro: </strong>${randomFromArray(Tabelas.encontros)}`);
+        });
+
+        modal.querySelector('#btn-horario').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Horário: </strong>${randomFromArray(Tabelas.horarios)}`);
+        });
+
+        modal.querySelector('#btn-chefao').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Chefão: </strong>${randomFromArray(Tabelas.chefoes)}`);
+        });
+
+        modal.querySelector('#btn-objeto').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Objeto: </strong>${randomFromArray(Tabelas.objetos)}`);
+        });
+
+        modal.querySelector('#btn-deus').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Deus: </strong> deus${Math.random() > .5 ? '' : 'a'} ${randomFromArray(Tabelas.deuses)}`);
+        });
+
+        modal.querySelector('#btn-temas').addEventListener('click', () => {
+            adicionaPergunta();
+            command_controller.adicionaAoLog(`<strong>Tema Narrativo: </strong>${randomFromArray(Tabelas.temas)}`);
+        });
+    }
+
     static temas = [
         'alta fantasia', 'baixa fantasia', 'fantasia sombria', 'horror cósmico', 'faroeste clássico',
         'steampunk', 'dieselpunk', 'space opera', 'cyberpunk', 'idade média', 'japão feudal', 'idade do bronze',

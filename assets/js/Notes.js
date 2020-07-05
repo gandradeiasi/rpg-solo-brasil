@@ -126,19 +126,6 @@ class Notes {
 
         notes_box.querySelectorAll('.arrow-up').forEach(x => {
             x.addEventListener('click', e => { Notes.moveUp(parseInt(x.dataset.id)); });
-        })
-
-        window.addEventListener('keyup', () => {
-            const element = document.activeElement;
-
-            if (element.classList.contains('current-note')) {
-                lista_notas.filter(x => x.id == element.dataset.id)[0].content = element.value;
-                Save.save();
-            }
-            else if (element.classList.contains('note-title')) {
-                lista_notas.filter(x => x.id == element.dataset.id)[0].title = element.innerText ? element.innerText : 'Nota';
-                Save.save();
-            }
         });
 
         const btn_adiciona_nota = document.querySelector('#btn-adiciona-nota');

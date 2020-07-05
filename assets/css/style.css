@@ -76,7 +76,11 @@ header .container .hamburger { display: none; z-index: 9; }
 .modal .body .fecha-modal { font-weight: bold; font-size: 16px; transform: scale(2); margin-top: -6px; margin-right: 6px; cursor: pointer; }
 .modal .body .title { font-weight: bold; font-size: 20px; flex: auto; position: relative; bottom: 5px; }
 
-.current-note { height: 70vh; padding-left: 0; width: 700px; max-width: 100%; }
+.current-note,
+.current-table { height: 70vh; padding-left: 0; width: 700px; max-width: 100%; }
+
+.btn-tabela-custom span{ opacity: .5; cursor: pointer; }
+.btn-tabela-custom span:hover { opacity: 1; cursor: pointer; }
 
 .botoes-exclui { text-align: right; }
 
