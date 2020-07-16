@@ -4,7 +4,7 @@ class BotaoInspiracoes {
         'dureza', 'grão', 'módulo', 'violência', 'calma', 'tempo', 'movimento',
         'perda', 'ganho', 'recebimento', 'oferta', 'repulsa', 'furtividade', 'confusão',
         'mecanismo', 'sombra', 'luz', 'imensidão', 'pequenez', 'maldição', 'magia',
-        'ar', 'vento', 'tetra', 'fogo', 'água', 'novidade', 'repetição',
+        'ar', 'vento', 'pedra', 'fogo', 'água', 'novidade', 'repetição',
         'antiguidade', 'destruição', 'fuga', 'moeda', 'símbolo', 'imagem', 'mordida',
         'brilho', 'metal', 'madeira', 'caminho', 'vida', 'morte', 'dor', 'prazer',
         'medo', 'alimento', 'material', 'pechincha', 'barganha', 'veste', 'item',
